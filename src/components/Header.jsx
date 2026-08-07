@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Shield, Activity } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function Header() {
   return (
@@ -13,7 +13,7 @@ export default function Header() {
           </div>
         </a>
 
-        <nav>
+        <nav className="desktop-nav">
           <ul className="nav-links">
             <li><a href="#tese">A Tese</a></li>
             <li><a href="#whatsapp">Território & IA</a></li>
@@ -23,9 +23,9 @@ export default function Header() {
           </ul>
         </nav>
 
-        <a href="#dashboard" className="btn btn-primary" style={{ padding: '10px 20px', fontSize: '0.9rem' }}>
+        <a href="#dashboard" className="btn btn-primary header-btn" style={{ padding: '8px 16px', fontSize: '0.85rem', flexShrink: 0 }}>
           <span>Acessar o app</span>
-          <ArrowRight size={16} />
+          <ArrowRight size={14} />
         </a>
       </div>
     </header>

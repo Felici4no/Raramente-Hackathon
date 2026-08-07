@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section className="section" style={{ paddingTop: '56px', paddingBottom: '72px' }}>
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', alignItems: 'center' }}>
+        <div className="grid-2col">
           
           {/* Coluna Esquerda - Texto */}
           <div className="animate-fade-in">
@@ -14,11 +14,11 @@ export default function Hero() {
               <span>Transformamos impacto em informação</span>
             </div>
 
-            <h1 style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 800, marginBottom: '20px', color: '#4A2F1B' }}>
+            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 800, marginBottom: '20px', color: '#4A2F1B' }}>
               O paciente raro deixa pistas. O <span style={{ color: '#0B6B2B' }}>Agente na Sua</span> conecta essas pistas.
             </h1>
 
-            <p style={{ fontSize: '1.15rem', color: '#524B45', marginBottom: '28px', lineHeight: 1.6 }}>
+            <p style={{ fontSize: 'clamp(1rem, 2vw, 1.15rem)', color: '#524B45', marginBottom: '28px', lineHeight: 1.6 }}>
               Unimos informações do território, jornada no SUS e inteligência artificial para identificar trajetórias que fogem do comum e apoiar a descoberta precoce de pacientes que precisam de investigação.
             </p>
 
@@ -29,12 +29,12 @@ export default function Hero() {
             </div>
 
             <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-              <a href="#tese" className="btn btn-primary">
+              <a href="#tese" className="btn btn-primary" style={{ flex: '1 1 auto', minWidth: '200px' }}>
                 <span>Explorar a plataforma</span>
                 <ArrowRight size={18} />
               </a>
 
-              <a href="#whatsapp" className="btn btn-secondary">
+              <a href="#whatsapp" className="btn btn-secondary" style={{ flex: '1 1 auto', minWidth: '180px' }}>
                 <span>Como funciona</span>
                 <Compass size={18} />
               </a>
@@ -43,10 +43,10 @@ export default function Hero() {
 
           {/* Coluna Direita - Mockup do Mascote & Card Interativo */}
           <div className="animate-fade-in" style={{ position: 'relative' }}>
-            <div className="card" style={{ background: 'linear-gradient(145deg, #FFFFFF 0%, #F9F7F1 100%)', borderRadius: '28px', border: '1px solid #E2DDD3', padding: '36px', position: 'relative', overflow: 'hidden' }}>
+            <div className="card" style={{ background: 'linear-gradient(145deg, #FFFFFF 0%, #F9F7F1 100%)', borderRadius: '28px', border: '1px solid #E2DDD3', padding: '28px', position: 'relative', overflow: 'hidden' }}>
               
               {/* Badge Flutuante no topo do Card */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <img src="/nasua.png" alt="Nasua" style={{ width: '42px', height: '42px', objectFit: 'contain' }} />
                   <div>
@@ -63,7 +63,7 @@ export default function Hero() {
 
               {/* Simulação rápida de card no Hero */}
               <div style={{ background: '#FFFFFF', borderRadius: '16px', padding: '20px', border: '1px solid #EBE7DE', marginBottom: '20px' }}>
-                <div style={{ fontSize: '0.8rem', color: '#8B5A2B', fontWeight: 700, uppercase: 'true', marginBottom: '6px' }}>
+                <div style={{ fontSize: '0.8rem', color: '#8B5A2B', fontWeight: 700, marginBottom: '6px' }}>
                   MICROÁREA 04 • ACS ANA
                 </div>
                 <div style={{ fontWeight: 700, color: '#231C18', fontSize: '1.05rem', marginBottom: '8px' }}>
@@ -82,7 +82,7 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.85rem', color: '#6B655F', borderTop: '1px solid #EBE7DE', paddingTop: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.85rem', color: '#6B655F', borderTop: '1px solid #EBE7DE', paddingTop: '16px', flexWrap: 'wrap', gap: '8px' }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                   <ShieldCheck size={16} color="#0B6B2B" />
                   Impacto Verificado SUS

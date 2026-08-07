@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AlertTriangle, CheckCircle, ShieldAlert, ArrowRight, Info, Eye } from 'lucide-react';
+import { AlertTriangle, CheckCircle, ShieldAlert } from 'lucide-react';
 
 export default function JourneyDemo() {
   const [selectedPatient, setSelectedPatient] = useState('atipico'); // 'comum' | 'atipico'
@@ -22,11 +22,11 @@ export default function JourneyDemo() {
         </div>
 
         {/* Botoes de Selecao de Paciente */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginBottom: '40px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginBottom: '40px', flexWrap: 'wrap' }}>
           <button 
             onClick={() => setSelectedPatient('comum')}
             style={{
-              padding: '14px 24px',
+              padding: '12px 20px',
               borderRadius: '9999px',
               border: selectedPatient === 'comum' ? '2px solid #57B33E' : '1px solid #E2DDD3',
               background: selectedPatient === 'comum' ? '#E8F5E9' : '#FFFFFF',
@@ -35,7 +35,8 @@ export default function JourneyDemo() {
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              gap: '10px',
+              gap: '8px',
+              fontSize: '0.92rem',
               transition: 'all 0.2s'
             }}
           >
@@ -46,7 +47,7 @@ export default function JourneyDemo() {
           <button 
             onClick={() => setSelectedPatient('atipico')}
             style={{
-              padding: '14px 24px',
+              padding: '12px 20px',
               borderRadius: '9999px',
               border: selectedPatient === 'atipico' ? '2px solid #F59E0B' : '1px solid #E2DDD3',
               background: selectedPatient === 'atipico' ? '#FEF3C7' : '#FFFFFF',
@@ -55,7 +56,8 @@ export default function JourneyDemo() {
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              gap: '10px',
+              gap: '8px',
+              fontSize: '0.92rem',
               transition: 'all 0.2s'
             }}
           >
@@ -79,7 +81,7 @@ export default function JourneyDemo() {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '28px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px', marginBottom: '28px' }}>
                 <div style={{ background: '#F4F1E8', padding: '16px', borderRadius: '12px' }}>
                   <div style={{ fontSize: '0.8rem', color: '#8B5A2B', fontWeight: 600 }}>ATENDIMENTOS</div>
                   <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#4A2F1B' }}>2 consultas</div>
@@ -123,7 +125,7 @@ export default function JourneyDemo() {
               </div>
 
               {/* Grid de Metricas da Atipicidade */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '28px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px', marginBottom: '28px' }}>
                 <div style={{ background: '#FEF3C7', padding: '16px', borderRadius: '12px', border: '1px solid #FDE68A' }}>
                   <div style={{ fontSize: '0.8rem', color: '#B45309', fontWeight: 700 }}>ATENDIMENTOS</div>
                   <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#92400E' }}>11 registros</div>
@@ -146,13 +148,13 @@ export default function JourneyDemo() {
               </div>
 
               {/* Destaque de Explicabilidade - 4 Sinais Encontrados */}
-              <div style={{ background: '#FFFBEB', borderRadius: '16px', padding: '24px', border: '1px solid #FCD34D' }}>
+              <div style={{ background: '#FFFBEB', borderRadius: '16px', padding: '20px', border: '1px solid #FCD34D' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px', color: '#B45309', fontWeight: 800, fontSize: '1.05rem' }}>
                   <ShieldAlert size={20} />
                   <span>4 SINAIS ENCONTRADOS QUE JUSTIFICAM A ATIPICIDADE</span>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                <div className="grid-signals">
                   <div style={{ background: '#FFFFFF', padding: '12px 16px', borderRadius: '10px', borderLeft: '4px solid #D97706', fontSize: '0.9rem', fontWeight: 700, color: '#4A2F1B' }}>
                     • Longa jornada no SUS sem resolução clínica (3 anos)
                   </div>

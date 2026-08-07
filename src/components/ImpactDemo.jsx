@@ -19,14 +19,14 @@ export default function ImpactDemo() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', alignItems: 'center' }}>
+        <div className="grid-2col">
           
           {/* Card de Perfil da ACS Ana com Pontuação de Impacto Verificado */}
-          <div className="card animate-fade-in" style={{ border: '2px solid #57B33E', background: '#FFFFFF', padding: '36px' }}>
+          <div className="card animate-fade-in" style={{ border: '2px solid #57B33E', background: '#FFFFFF' }}>
             
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', paddingBottom: '20px', borderBottom: '1px solid #EBE7DE' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', paddingBottom: '20px', borderBottom: '1px solid #EBE7DE', flexWrap: 'wrap', gap: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(11, 107, 43, 0.1)', color: '#0B6B2B', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '1.2rem' }}>
+                <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(11, 107, 43, 0.1)', color: '#0B6B2B', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '1.2rem', flexShrink: 0 }}>
                   AA
                 </div>
                 <div>
@@ -35,14 +35,14 @@ export default function ImpactDemo() {
                 </div>
               </div>
 
-              <div style={{ textAlign: 'right' }}>
+              <div>
                 <div style={{ fontSize: '0.75rem', color: '#6B655F', textTransform: 'uppercase', fontWeight: 700 }}>Impacto Verificado</div>
                 <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#0B6B2B' }}>1.420 <span style={{ fontSize: '0.9rem', fontWeight: 700 }}>pts</span></div>
               </div>
             </div>
 
             {/* Metricas de Trabalho Comprovado */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '24px' }}>
+            <div className="grid-metrics-2col" style={{ marginBottom: '24px' }}>
               
               <div style={{ background: '#F4F1E8', padding: '16px', borderRadius: '14px', border: '1px solid #E2DDD3' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#0B6B2B', fontWeight: 700, fontSize: '0.82rem', marginBottom: '4px' }}>
@@ -83,7 +83,7 @@ export default function ImpactDemo() {
             </div>
 
             <div style={{ background: '#E8F5E9', borderRadius: '12px', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.85rem', color: '#0B6B2B', fontWeight: 600 }}>
-              <ShieldCheck size={18} />
+              <ShieldCheck size={18} style={{ flexShrink: 0 }} />
               <span>Validação sem atrito: A pontuação valoriza o trabalho contínuo, a escuta atenta e a qualidade da informação territorial.</span>
             </div>
 

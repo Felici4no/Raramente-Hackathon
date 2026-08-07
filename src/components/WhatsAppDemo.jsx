@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Mic, Play, Pause, CheckCheck, Sparkles, Database, ArrowRight, MessageSquare, AudioWaveform } from 'lucide-react';
+import { Mic, Play, Pause, CheckCheck, Sparkles, MessageSquare } from 'lucide-react';
 
 export default function WhatsAppDemo() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [activeStep, setActiveStep] = useState(3); // 0: Áudio, 1: Transcrição, 2: Estruturação, 3: Jornada
 
   return (
     <section id="whatsapp" className="section" style={{ background: '#F4F1E8' }}>
@@ -22,7 +21,7 @@ export default function WhatsAppDemo() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', alignItems: 'center' }}>
+        <div className="grid-2col">
           
           {/* Lado Esquerdo: Interface de WhatsApp Simulado */}
           <div style={{ background: '#0B141A', borderRadius: '28px', padding: '20px', boxShadow: '0 16px 40px rgba(0,0,0,0.15)', border: '4px solid #2A3942' }}>
@@ -43,12 +42,12 @@ export default function WhatsAppDemo() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', minHeight: '340px' }}>
               
               {/* Mensagem 1: Áudio da ACS Ana */}
-              <div style={{ alignSelf: 'flex-end', maxWidth: '88%', background: '#005C4B', color: '#E9EDEF', borderRadius: '16px 16px 2px 16px', padding: '12px 16px' }}>
+              <div style={{ alignSelf: 'flex-end', maxWidth: '92%', background: '#005C4B', color: '#E9EDEF', borderRadius: '16px 16px 2px 16px', padding: '12px 16px' }}>
                 <div style={{ fontSize: '0.78rem', color: '#8696A0', marginBottom: '6px', fontWeight: 600 }}>ACS Ana • Visita Domiciliar</div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                   <button 
                     onClick={() => setIsPlaying(!isPlaying)}
-                    style={{ width: '36px', height: '36px', borderRadius: '50%', background: '#25D366', border: 'none', color: '#0B141A', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                    style={{ width: '36px', height: '36px', borderRadius: '50%', background: '#25D366', border: 'none', color: '#0B141A', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 }}
                   >
                     {isPlaying ? <Pause size={18} /> : <Play size={18} style={{ marginLeft: '2px' }} />}
                   </button>
@@ -72,7 +71,7 @@ export default function WhatsAppDemo() {
               </div>
 
               {/* Mensagem 2: Resposta Inteligente da Nasua IA */}
-              <div style={{ alignSelf: 'flex-start', maxWidth: '92%', background: '#202C33', color: '#E9EDEF', borderRadius: '16px 16px 16px 2px', padding: '14px 16px', borderLeft: '3px solid #57B33E' }}>
+              <div style={{ alignSelf: 'flex-start', maxWidth: '95%', background: '#202C33', color: '#E9EDEF', borderRadius: '16px 16px 16px 2px', padding: '14px 16px', borderLeft: '3px solid #57B33E' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#57B33E', fontWeight: 700, fontSize: '0.82rem', marginBottom: '8px' }}>
                   <Sparkles size={14} />
                   <span>Nasua IA • Triagem territorial</span>
@@ -111,8 +110,8 @@ export default function WhatsAppDemo() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               
-              <div className="card" style={{ padding: '20px', display: 'flex', alignItems: 'center', gap: '16px', background: activeStep === 0 ? '#FFFFFF' : 'rgba(255,255,255,0.6)' }}>
-                <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(11, 107, 43, 0.1)', color: '#0B6B2B', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800 }}>1</div>
+              <div className="card" style={{ padding: '20px', display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(11, 107, 43, 0.1)', color: '#0B6B2B', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, flexShrink: 0 }}>1</div>
                 <div>
                   <div style={{ fontWeight: 700, color: '#4A2F1B' }}>ÁUDIO DE CAMPO</div>
                   <div style={{ fontSize: '0.85rem', color: '#6B655F' }}>O agente relata a observação em linguagem natural pelo WhatsApp.</div>
@@ -120,7 +119,7 @@ export default function WhatsAppDemo() {
               </div>
 
               <div className="card" style={{ padding: '20px', display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(46, 139, 60, 0.1)', color: '#2E8B3C', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800 }}>2</div>
+                <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(46, 139, 60, 0.1)', color: '#2E8B3C', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, flexShrink: 0 }}>2</div>
                 <div>
                   <div style={{ fontWeight: 700, color: '#4A2F1B' }}>TRANSCRIÇÃO E PROCESSAMENTO</div>
                   <div style={{ fontSize: '0.85rem', color: '#6B655F' }}>Whisper + LLM transcrevem e normalizam o áudio instantaneamente.</div>
@@ -128,7 +127,7 @@ export default function WhatsAppDemo() {
               </div>
 
               <div className="card" style={{ padding: '20px', display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(139, 90, 43, 0.1)', color: '#8B5A2B', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800 }}>3</div>
+                <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(139, 90, 43, 0.1)', color: '#8B5A2B', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, flexShrink: 0 }}>3</div>
                 <div>
                   <div style={{ fontWeight: 700, color: '#4A2F1B' }}>DADOS ESTRUTURADOS</div>
                   <div style={{ fontSize: '0.85rem', color: '#6B655F' }}>Conversão automática em termos clínicos padronizados (CID / HPO).</div>
@@ -136,7 +135,7 @@ export default function WhatsAppDemo() {
               </div>
 
               <div className="card" style={{ padding: '20px', display: 'flex', alignItems: 'center', gap: '16px', border: '2px solid #57B33E', background: '#FFFFFF' }}>
-                <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: '#57B33E', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800 }}>4</div>
+                <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: '#57B33E', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, flexShrink: 0 }}>4</div>
                 <div>
                   <div style={{ fontWeight: 700, color: '#0B6B2B' }}>COMPOSIÇÃO DA JORNADA</div>
                   <div style={{ fontSize: '0.85rem', color: '#6B655F' }}>O dado entra no histórico do território e aciona o motor de atipicidade.</div>
