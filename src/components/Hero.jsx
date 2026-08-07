@@ -3,8 +3,25 @@ import { ArrowRight, Compass, ShieldCheck, Sparkles, AlertCircle } from 'lucide-
 
 export default function Hero() {
   return (
-    <section className="section" style={{ paddingTop: '56px', paddingBottom: '72px' }}>
+    <section className="section" style={{ paddingTop: '40px', paddingBottom: '72px' }}>
       <div className="container">
+        
+        {/* Brand Logo Header no topo da Hero */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '40px' }}>
+          <a href="#" style={{ display: 'inline-block' }}>
+            <img 
+              src="/logo.png" 
+              alt="Agente na Sua Logo" 
+              style={{ height: '54px', width: 'auto', objectFit: 'contain' }} 
+            />
+          </a>
+
+          <span className="badge badge-primary" style={{ textTransform: 'none', fontWeight: 700, fontSize: '0.82rem' }}>
+            <ShieldCheck size={14} />
+            Plataforma SUS
+          </span>
+        </div>
+
         <div className="grid-2col">
           
           {/* Coluna Esquerda - Texto */}
