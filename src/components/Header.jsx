@@ -6,11 +6,11 @@ export default function Header() {
     <header className="header-nav">
       <div className="container header-content">
         <a href="#" className="logo-group">
-          <img src="/logo.png" alt="Agente na Sua Logo" className="logo-icon" style={{ borderRadius: '10px' }} />
-          <div className="logo-text">
-            <span>Agente na Sua</span>
-            <span className="logo-sub">Saúde & Inteligência no SUS</span>
-          </div>
+          <img 
+            src="/logo.png" 
+            alt="Agente na Sua Logo" 
+            style={{ height: '46px', width: 'auto', objectFit: 'contain', display: 'block' }} 
+          />
         </a>
 
         <nav className="desktop-nav">
@@ -23,9 +23,9 @@ export default function Header() {
           </ul>
         </nav>
 
-        <a href="#dashboard" className="btn btn-primary header-btn" style={{ padding: '8px 16px', fontSize: '0.85rem', flexShrink: 0 }}>
+        <a href="#dashboard" className="btn btn-primary header-btn" style={{ padding: '10px 20px', fontSize: '0.88rem', flexShrink: 0 }}>
           <span>Acessar o app</span>
-          <ArrowRight size={14} />
+          <ArrowRight size={15} />
         </a>
       </div>
     </header>
