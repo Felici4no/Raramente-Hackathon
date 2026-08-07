@@ -6,7 +6,7 @@ export default function Header() {
     <header className="header-nav">
       <div className="container header-content">
         <a href="#" className="logo-group">
-          <img src="/nasua.png" alt="Mascote Nasua" className="logo-icon" />
+          <img src="/logo.png" alt="Agente na Sua Logo" className="logo-icon" style={{ borderRadius: '10px' }} />
           <div className="logo-text">
             <span>Agente na Sua</span>
             <span className="logo-sub">Saúde & Inteligência no SUS</span>

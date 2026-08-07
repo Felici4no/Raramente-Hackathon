@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Coluna 1 */}
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-              <img src="/nasua.png" alt="Nasua Logo" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
+              <img src="/logo.png" alt="Agente na Sua Logo" style={{ width: '44px', height: '44px', objectFit: 'contain', borderRadius: '10px' }} />
               <span style={{ fontSize: '1.4rem', fontWeight: 800, color: '#FFFFFF' }}>Agente na Sua</span>
             </div>
             <p style={{ fontSize: '0.9rem', color: '#B0A8A0', lineHeight: 1.6, marginBottom: '16px' }}>
