@@ -1,60 +1,51 @@
-import React from 'react';
-import { Radar, Route, Target, Award } from 'lucide-react';
+﻿import React from "react";
+import { TAB_CONFIG } from "../../services/authService.js";
+import {
+  Home, Users, MessageCircle, MapPin, Award,
+  Radar, Target, ClipboardCheck, AlertCircle, User,
+  BarChart2, Map, TrendingUp
+} from "lucide-react";
 
-export default function AppBottomNav({ activeTab, setActiveTab }) {
+const ICON_MAP = {
+  Home, Users, MessageCircle, MapPin, Award,
+  Radar, Target, ClipboardCheck, AlertCircle, User,
+  BarChart2, Map, TrendingUp,
+};
+
+export default function AppBottomNav({ role, activeTab, setActiveTab }) {
+  const tabs = TAB_CONFIG[role] || TAB_CONFIG.ACS;
+
   return (
-    <nav className="app-bottom-nav" aria-label="Navegação do Aplicativo">
-      
-      {/* Tab 1: Radar */}
-      <button
-        onClick={() => setActiveTab('radar')}
-        className={`app-nav-tab ${activeTab === 'radar' ? 'active' : ''}`}
-        aria-label="Radar"
-      >
-        <Radar size={18} />
-        <span>Radar</span>
-      </button>
+    <nav className="app-bottom-nav">
+      {tabs.map((tab) => {
+        const Icon = ICON_MAP[tab.icon] || Home;
+        const isActive = activeTab === tab.id;
+        const isElevated = tab.elevated;
 
-      {/* Tab 2: Jornadas */}
-      <button
-        onClick={() => setActiveTab('jornadas')}
-        className={`app-nav-tab ${activeTab === 'jornadas' ? 'active' : ''}`}
-        aria-label="Jornadas"
-      >
-        <Route size={18} />
-        <span>Jornadas</span>
-      </button>
+        if (isElevated) {
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className="app-nav-tab-nasua"
+              style={{ position: "relative", top: "-14px" }}
+              aria-label={tab.label}>
+              <img src="/mascote.png" alt="Nasua" style={{ width: "30px", height: "30px", objectFit: "contain" }} />
+            </button>
+          );
+        }
 
-      {/* Tab 3 Central Elevated: Nasua */}
-      <button
-        onClick={() => setActiveTab('nasua')}
-        className={`app-nav-tab-nasua ${activeTab === 'nasua' ? 'active' : ''}`}
-        aria-label="Nasua — Guia do Território e Microjogos"
-        title="Falar com o Nasua / Treinar em 20s"
-      >
-        <img src="/nasua.png" alt="Nasua" style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
-      </button>
-
-      {/* Tab 4: Missões */}
-      <button
-        onClick={() => setActiveTab('missoes')}
-        className={`app-nav-tab ${activeTab === 'missoes' ? 'active' : ''}`}
-        aria-label="Missões"
-      >
-        <Target size={18} />
-        <span>Missões</span>
-      </button>
-
-      {/* Tab 5: Impacto */}
-      <button
-        onClick={() => setActiveTab('impacto')}
-        className={`app-nav-tab ${activeTab === 'impacto' ? 'active' : ''}`}
-        aria-label="Impacto"
-      >
-        <Award size={18} />
-        <span>Impacto</span>
-      </button>
-
+        return (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={"app-nav-tab" + (isActive ? " app-nav-tab--active" : "")}
+            aria-label={tab.label}>
+            <Icon size={20} />
+            <span>{tab.label}</span>
+          </button>
+        );
+      })}
     </nav>
   );
 }

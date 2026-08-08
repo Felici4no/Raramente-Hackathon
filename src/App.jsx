@@ -1,80 +1,103 @@
-import React, { useState, useEffect } from 'react';
-import LoadingScreen from './components/LoadingScreen.jsx';
-import AppHeader from './components/app/AppHeader.jsx';
-import AppBottomNav from './components/app/AppBottomNav.jsx';
-import RadarScreen from './components/app/RadarScreen.jsx';
-import PistasSwipeScreen from './components/app/PistasSwipeScreen.jsx';
-import AssinaturaJornadaScreen from './components/app/AssinaturaJornadaScreen.jsx';
-import JornadasScreen from './components/app/JornadasScreen.jsx';
-import ListaJornadasScreen from './components/app/ListaJornadasScreen.jsx';
-import MissoesScreen from './components/app/MissoesScreen.jsx';
-import NasuaMicrogamesScreen from './components/app/NasuaMicrogamesScreen.jsx';
-import ImpactoAppScreen from './components/app/ImpactoAppScreen.jsx';
+﻿import React, { useState, useEffect } from "react";
+import { getSession, logout, getDefaultTab } from "./services/authService.js";
+import LoadingScreen from "./components/LoadingScreen.jsx";
+import AppHeader from "./components/app/AppHeader.jsx";
+import AppBottomNav from "./components/app/AppBottomNav.jsx";
+import LoginScreen from "./components/app/LoginScreen.jsx";
+import InicioScreen from "./components/app/InicioScreen.jsx";
+import MinhaRedeScreen from "./components/app/MinhaRedeScreen.jsx";
+import AddFamiliarScreen from "./components/app/AddFamiliarScreen.jsx";
+import RadarScreen from "./components/app/RadarScreen.jsx";
+import PistasSwipeScreen from "./components/app/PistasSwipeScreen.jsx";
+import AssinaturaJornadaScreen from "./components/app/AssinaturaJornadaScreen.jsx";
+import JornadasScreen from "./components/app/JornadasScreen.jsx";
+import ListaJornadasScreen from "./components/app/ListaJornadasScreen.jsx";
+import MissoesScreen from "./components/app/MissoesScreen.jsx";
+import NasuaMicrogamesScreen from "./components/app/NasuaMicrogamesScreen.jsx";
+import ImpactoAppScreen from "./components/app/ImpactoAppScreen.jsx";
+import CareTeamScreen from "./components/app/CareTeamScreen.jsx";
+import ManagerScreen from "./components/app/ManagerScreen.jsx";
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading]     = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
+  const [session, setSession]         = useState(() => getSession());
 
-  // App Navigation States
-  const [activeTab, setActiveTab] = useState('radar'); // 'radar' | 'jornadas' | 'nasua' | 'missoes' | 'impacto'
-  const [flowState, setFlowState] = useState('idle');  // 'idle' | 'swiping' | 'result'
+  // Navigation
+  const [activeTab, setActiveTab]           = useState(() => session ? getDefaultTab(session.role) : "radar");
+  const [flowState, setFlowState]           = useState("idle"); // idle | swiping | result
   const [currentPistaData, setCurrentPistaData] = useState(null);
-  const [selectedJornada, setSelectedJornada] = useState(null); // for 2-level jornadas nav
+  const [selectedJornada, setSelectedJornada]   = useState(null);
+
+  // Minha Rede sub-navigation
+  const [redeView, setRedeView] = useState("list"); // "list" | "addFamiliar"
 
   useEffect(() => {
-    const fadeTimer = setTimeout(() => setIsFadingOut(true), 1200);
+    const fadeTimer   = setTimeout(() => setIsFadingOut(true), 1200);
     const removeTimer = setTimeout(() => setIsLoading(false), 1800);
-    return () => {
-      clearTimeout(fadeTimer);
-      clearTimeout(removeTimer);
-    };
+    return () => { clearTimeout(fadeTimer); clearTimeout(removeTimer); };
   }, []);
 
-  // Handlers for Golden Path
-  const handleStartPista = () => {
-    setFlowState('swiping');
-  };
+  // Auth Handlers
+  function handleLogin(user) {
+    setSession(user);
+    setActiveTab(getDefaultTab(user.role));
+    setRedeView("list");
+    setFlowState("idle");
+  }
 
-  const handlePistasComplete = (data) => {
-    setCurrentPistaData(data);
-    setFlowState('result');
-  };
+  function handleLogout(action) {
+    if (action === "switch" || action === "logout") {
+      logout(); // only removes agente_session
+      setSession(null);
+      setFlowState("idle");
+      setActiveTab("radar");
+    }
+  }
 
-  const handleResetFlow = () => {
-    setFlowState('idle');
+  // Flow Handlers
+  function handleStartPista() { setFlowState("swiping"); }
+  function handlePistasComplete(data) { setCurrentPistaData(data); setFlowState("result"); }
+  function handleResetFlow() {
+    setFlowState("idle");
     setCurrentPistaData(null);
-    setActiveTab('radar');
-  };
-
-  const handleViewTerritorio = () => {
-    setFlowState('idle');
+    if (session) setActiveTab(getDefaultTab(session.role));
+  }
+  function handleViewTerritorio() {
+    setFlowState("idle");
     setCurrentPistaData(null);
     setSelectedJornada(null);
-    setActiveTab('jornadas');
-  };
+    setActiveTab("jornadas");
+  }
+
+  // If no session â€” show login gate
+  if (!session) {
+    return (
+      <div className="app-viewport-wrapper">
+        {isLoading && <LoadingScreen isFadingOut={isFadingOut} />}
+        <LoginScreen onLogin={handleLogin} />
+      </div>
+    );
+  }
+
+  const role = session.role;
 
   return (
     <div className="app-viewport-wrapper">
       {isLoading && <LoadingScreen isFadingOut={isFadingOut} />}
 
       <div className="app-mobile-shell">
-        
-        {/* Header Bar */}
-        <AppHeader connectionsToday={3} />
+        <AppHeader session={session} connectionsToday={3} />
 
-        {/* Main Content Area */}
         <main className="app-main-content">
-          
-          {/* Flow Override 1: Swipe Cards Deck */}
-          {flowState === 'swiping' && (
-            <PistasSwipeScreen
-              onCancel={handleResetFlow}
-              onComplete={handlePistasComplete}
-            />
+
+          {/* â”€â”€ Flow Override: Swipe Cards â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+          {flowState === "swiping" && (
+            <PistasSwipeScreen onCancel={handleResetFlow} onComplete={handlePistasComplete} />
           )}
 
-          {/* Flow Override 2: Assinatura da Jornada & Grafo */}
-          {flowState === 'result' && (
+          {/* â”€â”€ Flow Override: Assinatura da Jornada â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+          {flowState === "result" && (
             <AssinaturaJornadaScreen
               pData={currentPistaData}
               onReset={handleResetFlow}
@@ -82,21 +105,61 @@ export default function App() {
             />
           )}
 
-          {/* Regular Tab Navigation */}
-          {flowState === 'idle' && (
+          {/* â”€â”€ Regular Tab Routing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+          {flowState === "idle" && (
             <>
-              {activeTab === 'radar' && (
-                <RadarScreen
+              {/* â”€ COLLABORATOR tabs â”€ */}
+              {role === "COLLABORATOR" && activeTab === "inicio" && (
+                <InicioScreen
+                  session={session}
+                  onOpenJornada={(p) => { setSelectedJornada(p); setActiveTab("jornadas"); }}
+                  onOpenRede={() => setActiveTab("rede")}
+                  onAddFamiliar={() => { setActiveTab("rede"); setRedeView("addFamiliar"); }}
                   onStartPista={handleStartPista}
-                  onOpenNasua={() => setActiveTab('nasua')}
                 />
               )}
 
-              {activeTab === 'jornadas' && !selectedJornada && (
+              {role === "COLLABORATOR" && activeTab === "rede" && redeView === "list" && (
+                <MinhaRedeScreen
+                  session={session}
+                  onAddFamiliar={() => setRedeView("addFamiliar")}
+                  onSelectPerson={(p) => { setSelectedJornada(p); setActiveTab("jornadas"); }}
+                />
+              )}
+
+              {role === "COLLABORATOR" && activeTab === "rede" && redeView === "addFamiliar" && (
+                <AddFamiliarScreen
+                  session={session}
+                  onBack={() => setRedeView("list")}
+                  onComplete={() => setRedeView("list")}
+                />
+              )}
+
+              {/* â”€ ACS tabs â”€ */}
+              {role === "ACS" && activeTab === "radar" && (
+                <RadarScreen onStartPista={handleStartPista} onOpenNasua={() => setActiveTab("nasua")} />
+              )}
+
+              {role === "ACS" && activeTab === "missoes" && (
+                <MissoesScreen />
+              )}
+
+              {/* â”€ CARE_TEAM tabs â”€ */}
+              {role === "CARE_TEAM" && activeTab === "revisoes" && (
+                <CareTeamScreen />
+              )}
+
+              {/* â”€ MANAGER tabs â”€ */}
+              {role === "MANAGER" && activeTab === "visao" && (
+                <ManagerScreen />
+              )}
+
+              {/* â”€ Shared tabs â”€ */}
+              {activeTab === "jornadas" && !selectedJornada && (
                 <ListaJornadasScreen onSelectJornada={setSelectedJornada} />
               )}
 
-              {activeTab === 'jornadas' && selectedJornada && (
+              {activeTab === "jornadas" && selectedJornada && (
                 <JornadasScreen
                   jornada={selectedJornada}
                   onBack={() => setSelectedJornada(null)}
@@ -104,29 +167,42 @@ export default function App() {
                 />
               )}
 
-              {activeTab === 'nasua' && (
+              {activeTab === "nasua" && (
                 <NasuaMicrogamesScreen />
               )}
 
-              {activeTab === 'missoes' && (
-                <MissoesScreen />
+              {activeTab === "impacto" && (
+                <ImpactoAppScreen
+                  session={session}
+                  onLogout={handleLogout}
+                  onViewRede={() => {
+                    if (role === "COLLABORATOR") { setActiveTab("rede"); setRedeView("list"); }
+                  }}
+                />
               )}
 
-              {activeTab === 'impacto' && (
-                <ImpactoAppScreen />
+              {/* Placeholder tabs for care_team and manager */}
+              {(role === "CARE_TEAM" || role === "MANAGER") && activeTab === "conta" && (
+                <ImpactoAppScreen
+                  session={session}
+                  onLogout={handleLogout}
+                  onViewRede={() => {}}
+                />
               )}
             </>
           )}
-
         </main>
 
-        {/* Bottom Navigation Bar */}
-        <AppBottomNav activeTab={activeTab} setActiveTab={(tab) => {
-          setFlowState('idle');
-          setSelectedJornada(null);
-          setActiveTab(tab);
-        }} />
-
+        <AppBottomNav
+          role={role}
+          activeTab={activeTab}
+          setActiveTab={(tab) => {
+            setFlowState("idle");
+            setSelectedJornada(null);
+            if (tab !== "rede") setRedeView("list");
+            setActiveTab(tab);
+          }}
+        />
       </div>
     </div>
   );
