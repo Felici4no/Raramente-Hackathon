@@ -1,62 +1,121 @@
 import React, { useState, useEffect } from 'react';
 import LoadingScreen from './components/LoadingScreen.jsx';
-import Header from './components/Header.jsx';
-import Hero from './components/Hero.jsx';
-import TeseCentral from './components/TeseCentral.jsx';
-import WhatsAppDemo from './components/WhatsAppDemo.jsx';
-import QuaTiRareSection from './components/QuaTiRareSection.jsx';
-import JourneyDemo from './components/JourneyDemo.jsx';
-import DashboardDemo from './components/DashboardDemo.jsx';
-import ImpactDemo from './components/ImpactDemo.jsx';
-import BottomNav from './components/BottomNav.jsx';
-import Footer from './components/Footer.jsx';
+import AppHeader from './components/app/AppHeader.jsx';
+import AppBottomNav from './components/app/AppBottomNav.jsx';
+import RadarScreen from './components/app/RadarScreen.jsx';
+import PistasSwipeScreen from './components/app/PistasSwipeScreen.jsx';
+import AssinaturaJornadaScreen from './components/app/AssinaturaJornadaScreen.jsx';
+import TerritorioScreen from './components/app/TerritorioScreen.jsx';
+import MissoesScreen from './components/app/MissoesScreen.jsx';
+import NasuaMicrogamesScreen from './components/app/NasuaMicrogamesScreen.jsx';
+import ImpactoAppScreen from './components/app/ImpactoAppScreen.jsx';
 
 export default function App() {
-  const [isLoading, setIsLoading]     = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
 
+  // App Navigation States
+  const [activeTab, setActiveTab] = useState('radar'); // 'radar' | 'jornadas' | 'nasua' | 'missoes' | 'impacto'
+  const [flowState, setFlowState] = useState('idle');  // 'idle' | 'swiping' | 'result'
+  const [currentPistaData, setCurrentPistaData] = useState(null);
+
   useEffect(() => {
-    const fadeTimer   = setTimeout(() => setIsFadingOut(true), 1400);
-    const removeTimer = setTimeout(() => setIsLoading(false), 2000);
+    const fadeTimer = setTimeout(() => setIsFadingOut(true), 1200);
+    const removeTimer = setTimeout(() => setIsLoading(false), 1800);
     return () => {
       clearTimeout(fadeTimer);
       clearTimeout(removeTimer);
     };
   }, []);
 
+  // Handlers for Golden Path
+  const handleStartPista = () => {
+    setFlowState('swiping');
+  };
+
+  const handlePistasComplete = (data) => {
+    setCurrentPistaData(data);
+    setFlowState('result');
+  };
+
+  const handleResetFlow = () => {
+    setFlowState('idle');
+    setCurrentPistaData(null);
+    setActiveTab('radar');
+  };
+
+  const handleViewTerritorio = () => {
+    setFlowState('idle');
+    setCurrentPistaData(null);
+    setActiveTab('jornadas');
+  };
+
   return (
-    <div style={{
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      backgroundColor: 'var(--color-bg-warm)',
-    }}>
+    <div className="app-viewport-wrapper">
       {isLoading && <LoadingScreen isFadingOut={isFadingOut} />}
 
-      <Header />
+      <div className="app-mobile-shell">
+        
+        {/* Header Bar */}
+        <AppHeader connectionsToday={3} />
 
-      {/*
-        Section order (per briefing):
-        Hero → O Problema → Território (WhatsApp/Nasua) → QuaTiRare →
-        Jornada Atípica → Dashboard → Impacto Verificado → Footer
-      */}
-      <main
-        style={{ flex: 1 }}
-        className="page-offset"
-      >
-        <Hero />
-        <TeseCentral />
-        <WhatsAppDemo />
-        <QuaTiRareSection />
-        <JourneyDemo />
-        <DashboardDemo />
-        <ImpactDemo />
-      </main>
+        {/* Main Content Area */}
+        <main className="app-main-content">
+          
+          {/* Flow Override 1: Swipe Cards Deck */}
+          {flowState === 'swiping' && (
+            <PistasSwipeScreen
+              onCancel={handleResetFlow}
+              onComplete={handlePistasComplete}
+            />
+          )}
 
-      <Footer />
+          {/* Flow Override 2: Assinatura da Jornada & Grafo */}
+          {flowState === 'result' && (
+            <AssinaturaJornadaScreen
+              pData={currentPistaData}
+              onReset={handleResetFlow}
+              onViewTerritorio={handleViewTerritorio}
+            />
+          )}
 
-      {/* BottomNav: visible on tablet/mobile only (hidden via CSS at ≥1024px) */}
-      <BottomNav />
+          {/* Regular Tab Navigation */}
+          {flowState === 'idle' && (
+            <>
+              {activeTab === 'radar' && (
+                <RadarScreen
+                  onStartPista={handleStartPista}
+                  onOpenNasua={() => setActiveTab('nasua')}
+                />
+              )}
+
+              {activeTab === 'jornadas' && (
+                <TerritorioScreen />
+              )}
+
+              {activeTab === 'nasua' && (
+                <NasuaMicrogamesScreen />
+              )}
+
+              {activeTab === 'missoes' && (
+                <MissoesScreen />
+              )}
+
+              {activeTab === 'impacto' && (
+                <ImpactoAppScreen />
+              )}
+            </>
+          )}
+
+        </main>
+
+        {/* Bottom Navigation Bar */}
+        <AppBottomNav activeTab={activeTab} setActiveTab={(tab) => {
+          setFlowState('idle');
+          setActiveTab(tab);
+        }} />
+
+      </div>
     </div>
   );
 }

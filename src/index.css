@@ -1081,3 +1081,380 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--color-amber-bg);
   color: var(--color-amber);
 }
+
+/* ============================================================
+   MOBILE GAMIFIED APP STYLES — Agente na Sua
+   ============================================================ */
+
+/* App Container / Shell */
+.app-viewport-wrapper {
+  min-height: 100vh;
+  background-color: #1c1512;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+@media (min-width: 600px) {
+  .app-viewport-wrapper {
+    padding: 20px 0;
+    background: radial-gradient(circle at center, #2e211a 0%, #150f0c 100%);
+  }
+}
+
+.app-mobile-shell {
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+  background-color: var(--color-bg-warm);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 600px) {
+  .app-mobile-shell {
+    min-height: 880px;
+    max-height: 920px;
+    border-radius: 36px;
+    border: 8px solid #2e241e;
+  }
+}
+
+.app-main-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 100px;
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+/* App Header */
+.app-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: rgba(244, 241, 232, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--color-border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.app-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.app-header-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: #FFFFFF;
+  padding: 2px;
+  border: 2px solid var(--color-primary);
+}
+
+.app-header-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--color-text-brown);
+}
+
+.app-header-stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #FFFFFF;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* Bottom Navigation Bar App */
+.app-bottom-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--color-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 8px;
+  z-index: 200;
+}
+
+.app-nav-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  color: #8B827A;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  flex: 1;
+  min-height: 48px;
+  justify-content: center;
+}
+
+.app-nav-tab.active {
+  color: var(--color-primary);
+  background: rgba(11, 107, 43, 0.08);
+}
+
+/* Elevated Nasua Button Central */
+.app-nav-tab-nasua {
+  position: relative;
+  top: -14px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #085221 100%);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid var(--color-bg-warm);
+  box-shadow: 0 8px 24px rgba(11, 107, 43, 0.35);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+}
+
+.app-nav-tab-nasua:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(11, 107, 43, 0.45);
+}
+
+.app-nav-tab-nasua.active {
+  background: linear-gradient(135deg, var(--color-amber) 0%, #B45309 100%);
+  box-shadow: 0 8px 24px rgba(217, 119, 6, 0.4);
+}
+
+/* Swipe Cards Deck (Tinder Style) */
+.swipe-deck-container {
+  width: 100%;
+  height: 380px;
+  position: relative;
+  margin: 12px 0 20px;
+  perspective: 1000px;
+}
+
+.swipe-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #FFFFFF;
+  border-radius: 24px;
+  border: 2px solid var(--color-border);
+  padding: 28px 24px;
+  box-shadow: 0 12px 32px rgba(74, 47, 27, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  user-select: none;
+  touch-action: pan-y;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.swipe-card.swiping-right {
+  border-color: var(--color-success);
+  box-shadow: 0 12px 36px rgba(87, 179, 62, 0.25);
+}
+
+.swipe-card.swiping-left {
+  border-color: #9CA3AF;
+  box-shadow: 0 12px 36px rgba(156, 163, 175, 0.2);
+}
+
+/* Action Controls (NÃO SEI on top, SIM / NÃO below) */
+.action-controls-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 0 12px;
+}
+
+.btn-action-unsure {
+  background: #FFFFFF;
+  color: var(--color-quati-brown);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 10px 24px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 44px;
+  width: 180px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.btn-action-unsure:hover {
+  background: var(--color-bg-warm);
+  border-color: var(--color-quati-brown);
+}
+
+.action-row-side {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.btn-action-no {
+  flex: 1;
+  background: #FFFFFF;
+  color: #6B655F;
+  border: 2px solid #D1D5DB;
+  border-radius: var(--radius-full);
+  padding: 14px 20px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  min-height: 52px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+}
+
+.btn-action-no:hover {
+  background: #F3F4F6;
+  border-color: #9CA3AF;
+  color: #374151;
+}
+
+.btn-action-yes {
+  flex: 1;
+  background: var(--color-primary);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 14px 20px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  min-height: 52px;
+  box-shadow: 0 6px 20px rgba(11, 107, 43, 0.3);
+}
+
+.btn-action-yes:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(11, 107, 43, 0.4);
+}
+
+/* Graph Visualization Nodes & Coati Tail Thread */
+.trajectory-graph-container {
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+
+.coati-tail-thread {
+  stroke-dasharray: 6;
+  animation: strokeFlow 30s linear infinite;
+}
+
+@keyframes strokeFlow {
+  from { stroke-dashoffset: 200; }
+  to { stroke-dashoffset: 0; }
+}
+
+.graph-node-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: all 0.25s ease;
+}
+
+.graph-node-origin {
+  background: rgba(139, 90, 43, 0.12);
+  color: var(--color-quati-brown);
+  border-color: rgba(139, 90, 43, 0.25);
+}
+
+.graph-node-service {
+  background: rgba(11, 107, 43, 0.1);
+  color: var(--color-primary);
+  border-color: rgba(11, 107, 43, 0.2);
+}
+
+.graph-node-cut {
+  background: #FEF2F2;
+  color: #DC2626;
+  border-color: #FCA5A5;
+}
+
+.graph-node-loop {
+  background: var(--color-amber-bg);
+  color: #B45309;
+  border-color: #FDE68A;
+}
+
+/* Knots and Unknotting Animations */
+@keyframes unknotAnim {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.15) rotate(180deg); opacity: 0.7; }
+  100% { transform: scale(1) rotate(360deg); }
+}
+
+.animate-unknot {
+  animation: unknotAnim 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
