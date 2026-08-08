@@ -4,12 +4,27 @@ import { SectionHeading } from '@/components/ui/SectionHeading'
 import { LoadingState } from '@/components/ui/LoadingState'
 import { DataSourceBadge } from '@/components/provenance/DataSourceBadge'
 import { ExportCsvButton } from '@/components/ui/ExportCsvButton'
+import { ChartFrame } from '@/components/charts/ChartFrame'
+import { BarChartPanel } from '@/components/charts/BarChartPanel'
+import { DonutChartPanel } from '@/components/charts/DonutChartPanel'
 import type { ExportRow } from '@/utils/exportCsv'
 import type { RarasGraphPublicNode } from '@/services/raras/rarasRealService'
 import styles from './DataExplorer.module.css'
 
 const PAGE_SIZE = 25
 const TYPE_LABEL: Record<string, string> = { disease: 'Doença', phenotype: 'Fenótipo', gene: 'Gene', drug: 'Fármaco' }
+const TYPE_COLORS = ['#0b6b2b', '#1e5bb8', '#d97706', '#c75b39', '#6b7688']
+const CONNECTION_BUCKETS = [
+  { label: '0–9', min: 0, max: 9 },
+  { label: '10–49', min: 10, max: 49 },
+  { label: '50–99', min: 50, max: 99 },
+  { label: '100–199', min: 100, max: 199 },
+  { label: '200+', min: 200, max: Infinity },
+]
+
+function truncateLabel(label: string, max = 26) {
+  return label.length > max ? `${label.slice(0, max - 1)}…` : label
+}
 
 type SortKey = 'label' | 'type' | 'connections'
 
@@ -45,6 +60,32 @@ export function DataExplorer() {
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE))
   const pageRows = filtered.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE)
 
+  const typeDistribution = useMemo(() => {
+    const counts: Record<string, number> = {}
+    for (const n of graph.data?.data ?? []) counts[n.type] = (counts[n.type] ?? 0) + 1
+    return Object.entries(counts)
+      .sort((a, b) => b[1] - a[1])
+      .map(([type, value]) => ({ label: TYPE_LABEL[type] ?? type, value }))
+  }, [graph.data])
+
+  const topByConnections = useMemo(
+    () =>
+      [...filtered]
+        .sort((a, b) => b.connections - a.connections)
+        .slice(0, 10)
+        .map((n) => ({ label: truncateLabel(n.label), value: n.connections })),
+    [filtered],
+  )
+
+  const connectionBuckets = useMemo(
+    () =>
+      CONNECTION_BUCKETS.map((b) => ({
+        label: b.label,
+        value: filtered.filter((n) => n.connections >= b.min && n.connections <= b.max).length,
+      })),
+    [filtered],
+  )
+
   function toggleSort(key: SortKey) {
     if (sortKey === key) {
       setSortDir((d) => (d === 'asc' ? 'desc' : 'asc'))
@@ -79,6 +120,32 @@ export function DataExplorer() {
         <LoadingState label="Carregando subgrafo público…" />
       ) : (
         <>
+          <div className={styles.chartsGrid}>
+            <ChartFrame
+              title="Distribuição por tipo"
+              subtitle="Composição do subgrafo público completo, independente dos filtros abaixo."
+              note={`Fonte: Raras Public Graph · ${graph.data?.data.length ?? 0} nós no total.`}
+            >
+              <DonutChartPanel data={typeDistribution} colors={TYPE_COLORS} height={180} />
+            </ChartFrame>
+
+            <ChartFrame
+              title="Mais conectados"
+              subtitle="Top 10 nós por número de conexões, dentro da seleção atual (tipo + busca)."
+              note="Conexões = arestas do nó no subgrafo público — não é medida clínica."
+            >
+              <BarChartPanel data={topByConnections} color="#1e5bb8" height={220} />
+            </ChartFrame>
+
+            <ChartFrame
+              title="Distribuição de conexões"
+              subtitle="Quantos nós da seleção atual caem em cada faixa de conectividade."
+              note="Faixas fixas: 0–9, 10–49, 50–99, 100–199, 200+."
+            >
+              <BarChartPanel data={connectionBuckets} color="#c75b39" height={220} />
+            </ChartFrame>
+          </div>
+
           <div className={styles.toolbar}>
             <div className={styles.filters}>
               <button className={`${styles.filterBtn} ${typeFilter === null ? styles.active : ''}`} onClick={() => setTypeFilter(null)}>
