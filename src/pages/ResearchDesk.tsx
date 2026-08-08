@@ -12,7 +12,7 @@ import styles from './ResearchDesk.module.css'
 const ACTIONS = [
   { label: 'Investigar caso', to: '/case/9104', tone: 'blue' as const },
   { label: 'Comparar doenças', to: '/compare', tone: 'green' as const },
-  { label: 'Mapa da raridade', to: '/rarity-map', tone: 'terracotta' as const },
+  { label: 'Mapa da raridade', to: '/research/map', tone: 'terracotta' as const },
   { label: 'Explorar dados', to: '/data-explorer', tone: 'amber' as const },
 ]
 
@@ -96,7 +96,7 @@ export function ResearchDesk() {
             </div>
             {stats.data && <DataSourceBadge isMock={stats.data.isMock} />}
           </div>
-          <Link to="/rarity-map" className={styles.ctaBtn}>
+          <Link to="/research/map" className={styles.ctaBtn}>
             Abrir mapa do Brasil →
           </Link>
         </Panel>

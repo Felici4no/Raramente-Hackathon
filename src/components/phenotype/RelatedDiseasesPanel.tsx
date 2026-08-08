@@ -1,4 +1,5 @@
 import type { RelatedDisease } from '@/types/domain'
+import { EntityLink } from '@/components/entity/EntityLink'
 import styles from './RelatedDiseasesPanel.module.css'
 
 export function RelatedDiseasesPanel({ diseases }: { diseases: RelatedDisease[] }) {
@@ -12,7 +13,9 @@ export function RelatedDiseasesPanel({ diseases }: { diseases: RelatedDisease[] 
         {diseases.map((d) => (
           <div key={d.id} className={styles.item}>
             <div className={styles.itemHead}>
-              <span className={styles.name}>{d.name}</span>
+              <span className={styles.name}>
+                <EntityLink entity={{ type: 'DISEASE', id: d.orphaCode ?? d.id, label: d.name, source: 'Raras Knowledge Graph', identifiers: { orpha: d.orphaCode } }} />
+              </span>
               {d.orphaCode && <span className={`${styles.code} mono`}>{d.orphaCode}</span>}
             </div>
             <div className={styles.sharedBar}>

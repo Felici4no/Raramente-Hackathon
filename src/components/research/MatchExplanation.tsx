@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
+import { EntityLink } from '@/components/entity/EntityLink'
 import styles from './MatchExplanation.module.css'
 
 interface HpoRef {
@@ -31,7 +32,8 @@ export function MatchExplanation({ matched, notObserved, uncertain, source, evid
           <ul className={styles.list}>
             {matched.map((h) => (
               <li key={h.hpoId} className={styles.present}>
-                <span className={styles.glyph}>✓</span> {h.label} <span className="mono">{h.hpoId}</span>
+                <span className={styles.glyph}>✓</span>{' '}
+                <EntityLink entity={{ type: 'PHENOTYPE', id: h.hpoId, label: h.label, identifiers: { hpo: h.hpoId } }} /> <span className="mono">{h.hpoId}</span>
               </li>
             ))}
           </ul>
@@ -44,7 +46,8 @@ export function MatchExplanation({ matched, notObserved, uncertain, source, evid
           <ul className={styles.list}>
             {notObserved.map((h) => (
               <li key={h.hpoId} className={styles.absent}>
-                <span className={styles.glyph}>○</span> {h.label} <span className="mono">{h.hpoId}</span>
+                <span className={styles.glyph}>○</span>{' '}
+                <EntityLink entity={{ type: 'PHENOTYPE', id: h.hpoId, label: h.label, identifiers: { hpo: h.hpoId } }} /> <span className="mono">{h.hpoId}</span>
               </li>
             ))}
           </ul>
@@ -57,7 +60,8 @@ export function MatchExplanation({ matched, notObserved, uncertain, source, evid
           <ul className={styles.list}>
             {uncertain.map((h) => (
               <li key={h.hpoId} className={styles.unknown}>
-                <span className={styles.glyph}>?</span> {h.label} <span className="mono">{h.hpoId}</span>
+                <span className={styles.glyph}>?</span>{' '}
+                <EntityLink entity={{ type: 'PHENOTYPE', id: h.hpoId, label: h.label, identifiers: { hpo: h.hpoId } }} /> <span className="mono">{h.hpoId}</span>
               </li>
             ))}
           </ul>

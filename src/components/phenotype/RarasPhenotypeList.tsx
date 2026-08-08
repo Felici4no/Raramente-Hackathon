@@ -1,5 +1,6 @@
 import type { RarasPhenotypeRef } from '@/types/raras'
 import { DataSourceBadge } from '@/components/provenance/DataSourceBadge'
+import { EntityLink } from '@/components/entity/EntityLink'
 import styles from './RarasPhenotypeList.module.css'
 
 interface RarasPhenotypeListProps {
@@ -22,7 +23,9 @@ export function RarasPhenotypeList({ phenotypes, isMock }: RarasPhenotypeListPro
           {phenotypes.map((p) => (
             <li key={p.hpoId} className={styles.item}>
               <span className={styles.hpoId}>{p.hpoId}</span>
-              <span className={styles.itemLabel}>{p.label}</span>
+              <span className={styles.itemLabel}>
+                <EntityLink entity={{ type: 'PHENOTYPE', id: p.hpoId, label: p.label, sublabel: p.frequency, source: 'Raras Knowledge Graph / HPO', identifiers: { hpo: p.hpoId } }} />
+              </span>
               {p.frequency && <span className={styles.frequency}>{p.frequency}</span>}
             </li>
           ))}

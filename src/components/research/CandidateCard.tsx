@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import type { RarasDiseaseCandidate } from '@/types/raras'
 import { useDiseaseDetail, useActiveTrials, useReferenceCenters, useSusCoverage, usePapersForDisease, useEvidence } from '@/hooks/useRarasData'
 import { Tag } from '@/components/ui/Tag'
 import { Button } from '@/components/ui/Button'
 import { DataSourceBadge } from '@/components/provenance/DataSourceBadge'
 import { HowDoWeKnow } from '@/components/provenance/HowDoWeKnow'
+import { EntityLink } from '@/components/entity/EntityLink'
 import { fuzzyLabelMatch } from '@/utils/fuzzyMatch'
 import { MatchExplanation } from './MatchExplanation'
 import styles from './CandidateCard.module.css'
@@ -39,7 +39,18 @@ export function CandidateCard({ candidate, caseHpo }: { candidate: RarasDiseaseC
       <div className={styles.header}>
         <div>
           <p className="eyebrow">Candidato de investigação</p>
-          <h3 className={styles.name}>{candidate.name}</h3>
+          <h3 className={styles.name}>
+            <EntityLink
+              entity={{
+                type: 'DISEASE',
+                id: `ORPHA:${candidate.orphaCode}`,
+                label: candidate.name,
+                sublabel: detail.data?.data.mondoCode ? `MONDO:${detail.data.data.mondoCode}` : undefined,
+                source: 'Raras Knowledge Graph',
+                identifiers: { orpha: candidate.orphaCode, mondo: detail.data?.data.mondoCode },
+              }}
+            />
+          </h3>
           <div className={styles.idRow}>
             <span className="mono">ORPHA:{candidate.orphaCode}</span>
             {detail.data?.data.mondoCode && <span className="mono">MONDO:{detail.data.data.mondoCode}</span>}
@@ -48,16 +59,22 @@ export function CandidateCard({ candidate, caseHpo }: { candidate: RarasDiseaseC
         <div className={styles.headerRight}>
           <Tag tone="terracotta">{candidate.matchPercent}% match HPO</Tag>
           {detail.data && <DataSourceBadge isMock={detail.data.isMock} />}
-          <Link className={styles.profileLink} to={`/research/disease/${candidate.orphaCode}`}>
-            Abrir perfil →
-          </Link>
         </div>
       </div>
 
       <div className={styles.fields}>
         <div className={styles.field}>
           <p className="eyebrow">Gene</p>
-          <p>{detail.data?.data.genes.map((g) => g.symbol).join(', ') || 'não informado'}</p>
+          <p>
+            {detail.data && detail.data.data.genes.length > 0
+              ? detail.data.data.genes.map((g, i) => (
+                  <span key={g.symbol}>
+                    {i > 0 && ', '}
+                    <EntityLink entity={{ type: 'GENE', id: g.symbol, label: g.symbol, sublabel: g.hgnc ? `HGNC:${g.hgnc}` : undefined, source: 'Raras Knowledge Graph' }} />
+                  </span>
+                ))
+              : 'não informado'}
+          </p>
         </div>
         <div className={styles.field}>
           <p className="eyebrow">Herança</p>
@@ -105,7 +122,17 @@ export function CandidateCard({ candidate, caseHpo }: { candidate: RarasDiseaseC
             <ul className={styles.smallList}>
               {(centers.data?.data ?? []).slice(0, 4).map((c) => (
                 <li key={c.name}>
-                  {c.name} {c.uf && <span className="mono">· {c.uf}</span>}
+                  <EntityLink
+                    entity={{
+                      type: 'REFERENCE_CENTER',
+                      id: c.cnes ?? c.name,
+                      label: c.name,
+                      sublabel: [c.city, c.uf].filter(Boolean).join('/'),
+                      source: 'Raras Knowledge Graph',
+                      identifiers: { cnes: c.cnes, uf: c.uf },
+                    }}
+                  />{' '}
+                  {c.uf && <span className="mono">· {c.uf}</span>}
                 </li>
               ))}
               {centers.isLoading && <li>carregando…</li>}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import { useDiseaseSearch, useDiseaseDetail, useSusCoverage, useActiveTrials, usePapersForDisease, useReferenceCenters } from '@/hooks/useRarasData'
 import { useWikipediaMatch, useWikipediaSummary } from '@/hooks/useWikipedia'
 import { useDebouncedValue } from '@/hooks/useDebouncedValue'
@@ -9,6 +9,7 @@ import { Panel } from '@/components/ui/Panel'
 import { Tag } from '@/components/ui/Tag'
 import { DataSourceBadge } from '@/components/provenance/DataSourceBadge'
 import { WikipediaSourceBadge } from '@/components/wikipedia/WikipediaSourceBadge'
+import { EntityLink } from '@/components/entity/EntityLink'
 import { ExportCsvButton } from '@/components/ui/ExportCsvButton'
 import type { ExportRow } from '@/utils/exportCsv'
 import styles from './DiseaseComparator.module.css'
@@ -64,7 +65,7 @@ function renderDiseaseCell(col: ComparisonColumn, rowIndex: number) {
         <>
           {d?.phenotypes.slice(0, 5).map((p) => (
             <span key={p.hpoId} className={styles.hpoChip}>
-              {p.label}
+              <EntityLink entity={{ type: 'PHENOTYPE', id: p.hpoId, label: p.label, identifiers: { hpo: p.hpoId } }} />
             </span>
           )) ?? '—'}
           {d && d.phenotypes.length > 5 && <span className={styles.more}>+{d.phenotypes.length - 5}</span>}
@@ -216,11 +217,18 @@ export function DiseaseComparator() {
                       <button className={styles.remove} onClick={() => removeDisease(col.orphaCode!)} aria-label="Remover">
                         ✕
                       </button>
-                      <p className={styles.columnName}>{col.detail.data?.data.name ?? `ORPHA:${col.orphaCode}`}</p>
+                      <p className={styles.columnName}>
+                        <EntityLink
+                          entity={{
+                            type: 'DISEASE',
+                            id: `ORPHA:${col.orphaCode}`,
+                            label: col.detail.data?.data.name ?? `ORPHA:${col.orphaCode}`,
+                            source: 'Raras Knowledge Graph',
+                            identifiers: { orpha: col.orphaCode ?? undefined },
+                          }}
+                        />
+                      </p>
                       {col.detail.data && <DataSourceBadge isMock={col.detail.data.isMock} />}
-                      <Link className={styles.profileLink} to={`/research/disease/${col.orphaCode}`}>
-                        Abrir perfil →
-                      </Link>
                     </div>
                   </th>
                 ))}
@@ -233,7 +241,18 @@ export function DiseaseComparator() {
                   {includeCase && <td className={i === 6 ? styles.chipCell : i === 12 ? styles.wikiCell : undefined}>{renderCaseCell(i)}</td>}
                   {columns.map((col) => (
                     <td key={col.orphaCode} className={i === 6 ? styles.chipCell : i === 12 ? styles.wikiCell : undefined}>
-                      {i === 12 ? <span className={styles.wikiText}>{renderDiseaseCell(col, i)}</span> : renderDiseaseCell(col, i)}
+                      {i === 5 && col.detail.data && col.detail.data.data.genes.length > 0 ? (
+                        col.detail.data.data.genes.map((g, gi) => (
+                          <span key={g.symbol}>
+                            {gi > 0 && ', '}
+                            <EntityLink entity={{ type: 'GENE', id: g.symbol, label: g.symbol, sublabel: g.hgnc ? `HGNC:${g.hgnc}` : undefined, source: 'Raras Knowledge Graph' }} />
+                          </span>
+                        ))
+                      ) : i === 12 ? (
+                        <span className={styles.wikiText}>{renderDiseaseCell(col, i)}</span>
+                      ) : (
+                        renderDiseaseCell(col, i)
+                      )}
                       {i === 12 && col.wikiMatch.data?.matchMethod && col.wikiMatch.data.matchMethod !== 'NO_MATCH' && (
                         <div className={styles.wikiCellBadge}>
                           <WikipediaSourceBadge />

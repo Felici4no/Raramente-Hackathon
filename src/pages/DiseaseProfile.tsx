@@ -19,6 +19,7 @@ import { LoadingState } from '@/components/ui/LoadingState'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { ExportCsvButton } from '@/components/ui/ExportCsvButton'
 import { DataSourceBadge } from '@/components/provenance/DataSourceBadge'
+import { EntityLink } from '@/components/entity/EntityLink'
 import { CaseGraphCanvas } from '@/components/graph/CaseGraphCanvas'
 import { GraphDetailPanel } from '@/components/graph/GraphDetailPanel'
 import { FactCard } from '@/components/cards/FactCard'
@@ -42,6 +43,20 @@ const TAB_LABEL: Record<Tab, string> = {
   sus: 'SUS',
   literature: 'Literatura',
   sources: 'Fontes',
+}
+
+function GeneList({ genes }: { genes: { symbol: string; hgnc?: string }[] }) {
+  if (genes.length === 0) return <span>não informado</span>
+  return (
+    <>
+      {genes.map((g, i) => (
+        <span key={g.symbol}>
+          {i > 0 && ', '}
+          <EntityLink entity={{ type: 'GENE', id: g.symbol, label: g.symbol, sublabel: g.hgnc ? `HGNC:${g.hgnc}` : undefined, source: 'Raras Knowledge Graph' }} />
+        </span>
+      ))}
+    </>
+  )
 }
 
 export function DiseaseProfile() {
@@ -128,6 +143,9 @@ export function DiseaseProfile() {
           <Button variant="secondary" size="sm" onClick={() => graphRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
             Abrir no grafo
           </Button>
+          <Button variant="secondary" size="sm" onClick={() => navigate(`/research/map?disease=ORPHA:${orphaCode}`)}>
+            Ver no mapa
+          </Button>
           <ExportCsvButton filename={`disease-${orphaCode}.csv`} rows={factRows} />
           <Button variant="secondary" size="sm" onClick={openSources}>
             Abrir fontes
@@ -149,7 +167,9 @@ export function DiseaseProfile() {
             <p>{detail.name}</p>
           </FactCard>
           <FactCard label="Genes" source="RARAS">
-            <p>{detail.genes.map((g) => g.symbol).join(', ') || 'não informado'}</p>
+            <p>
+              <GeneList genes={detail.genes} />
+            </p>
           </FactCard>
           <FactCard label="Herança" source="RARAS">
             <p>{detail.inheritance || 'não informado'}</p>
@@ -182,14 +202,17 @@ export function DiseaseProfile() {
               <ul className={styles.simpleList}>
                 {detail.phenotypes.slice(0, 6).map((p) => (
                   <li key={p.hpoId}>
-                    {p.label} <span className="mono">{p.hpoId}</span>
+                    <EntityLink entity={{ type: 'PHENOTYPE', id: p.hpoId, label: p.label, sublabel: p.frequency, source: 'Raras Knowledge Graph / HPO', identifiers: { hpo: p.hpoId } }} />{' '}
+                    <span className="mono">{p.hpoId}</span>
                   </li>
                 ))}
               </ul>
             </Panel>
             <Panel raised padded>
               <p className="eyebrow">Gene</p>
-              <p>{detail.genes.map((g) => g.symbol).join(', ') || 'não informado'}</p>
+              <p>
+                <GeneList genes={detail.genes} />
+              </p>
             </Panel>
             <Panel raised padded>
               <p className="eyebrow">Herança</p>
@@ -250,7 +273,8 @@ export function DiseaseProfile() {
               {detail.genes.length === 0 && <li>Nenhum gene estruturado disponível.</li>}
               {detail.genes.map((g) => (
                 <li key={g.symbol}>
-                  {g.symbol} {g.hgnc && <span className="mono">HGNC:{g.hgnc}</span>}
+                  <EntityLink entity={{ type: 'GENE', id: g.symbol, label: g.symbol, sublabel: g.hgnc ? `HGNC:${g.hgnc}` : undefined, source: 'Raras Knowledge Graph' }} />{' '}
+                  {g.hgnc && <span className="mono">HGNC:{g.hgnc}</span>}
                 </li>
               ))}
             </ul>
@@ -299,9 +323,7 @@ export function DiseaseProfile() {
               <ul className={styles.paperList}>
                 {papersQ.data!.data.map((p) => (
                   <li key={p.title}>
-                    <a href={p.url} target="_blank" rel="noreferrer noopener">
-                      {p.title}
-                    </a>
+                    <EntityLink entity={{ type: 'PAPER', id: p.url ?? p.title, label: p.title, source: 'Raras · PubMed', identifiers: { url: p.url } }} />
                     <span className={styles.paperMeta}>
                       {p.journal}, {p.year} {p.similarity && `· sim ${p.similarity}`}
                     </span>

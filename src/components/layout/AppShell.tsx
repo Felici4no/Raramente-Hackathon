@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { NavLink } from 'react-router-dom'
 import { SourceRegistryDrawer } from '@/components/provenance/SourceRegistryDrawer'
+import { EntityDrawer } from '@/components/entity/EntityDrawer'
 import styles from './AppShell.module.css'
 
 const TOP_LINKS = [
@@ -8,7 +9,7 @@ const TOP_LINKS = [
   { to: '/case/9104', label: 'Caso #9104' },
   { to: '/auto-research', label: 'Auto Research' },
   { to: '/compare', label: 'Comparador' },
-  { to: '/rarity-map', label: 'Mapa da Raridade' },
+  { to: '/research/map', label: 'Mapa da Raridade' },
   { to: '/data-explorer', label: 'Data Explorer' },
 ]
 
@@ -34,6 +35,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       </nav>
       <main className={styles.main}>{children}</main>
       <SourceRegistryDrawer />
+      <EntityDrawer />
     </div>
   )
 }

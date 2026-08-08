@@ -6,6 +6,7 @@ import { LoadingState } from '@/components/ui/LoadingState'
 import { Panel } from '@/components/ui/Panel'
 import { Tag } from '@/components/ui/Tag'
 import { DataSourceBadge } from '@/components/provenance/DataSourceBadge'
+import { EntityLink } from '@/components/entity/EntityLink'
 import { ExportCsvButton } from '@/components/ui/ExportCsvButton'
 import { CandidateCard } from '@/components/research/CandidateCard'
 import type { ExportRow } from '@/utils/exportCsv'
@@ -47,9 +48,9 @@ export function AutoResearch() {
           ))}
         </div>
         <div className={styles.hpoChips}>
-          {caseHpoIds.map((id) => (
-            <Tag key={id} tone="amber" size="sm">
-              {id}
+          {caseHpo.map((h) => (
+            <Tag key={h.hpoId} tone="amber" size="sm">
+              <EntityLink entity={{ type: 'PHENOTYPE', id: h.hpoId, label: h.hpoId, sublabel: h.label, identifiers: { hpo: h.hpoId } }} />
             </Tag>
           ))}
         </div>

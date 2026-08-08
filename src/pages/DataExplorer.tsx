@@ -7,9 +7,20 @@ import { ExportCsvButton } from '@/components/ui/ExportCsvButton'
 import { ChartFrame } from '@/components/charts/ChartFrame'
 import { BarChartPanel } from '@/components/charts/BarChartPanel'
 import { DonutChartPanel } from '@/components/charts/DonutChartPanel'
+import { EntityLink } from '@/components/entity/EntityLink'
 import type { ExportRow } from '@/utils/exportCsv'
+import type { EntityRef } from '@/types/entities'
 import type { RarasGraphPublicNode } from '@/services/raras/rarasRealService'
 import styles from './DataExplorer.module.css'
+
+function nodeToEntity(n: RarasGraphPublicNode): EntityRef | null {
+  const [prefix, ...rest] = n.id.split(':')
+  const code = rest.join(':')
+  if (prefix === 'disease') return { type: 'DISEASE', id: `ORPHA:${code}`, label: n.label, source: 'Raras Public Graph', identifiers: { orpha: code } }
+  if (prefix === 'phenotype') return { type: 'PHENOTYPE', id: code, label: n.label, source: 'Raras Public Graph', identifiers: { hpo: code } }
+  if (prefix === 'gene') return { type: 'GENE', id: code, label: n.label, source: 'Raras Public Graph' }
+  return null
+}
 
 const PAGE_SIZE = 25
 const TYPE_LABEL: Record<string, string> = { disease: 'Doença', phenotype: 'Fenótipo', gene: 'Gene', drug: 'Fármaco' }
@@ -202,15 +213,18 @@ export function DataExplorer() {
                 </tr>
               </thead>
               <tbody>
-                {pageRows.map((n) => (
+                {pageRows.map((n) => {
+                  const entity = nodeToEntity(n)
+                  return (
                   <tr key={n.id}>
-                    <td>{n.label}</td>
+                    <td>{entity ? <EntityLink entity={entity} /> : n.label}</td>
                     <td className="mono">{n.id}</td>
                     {columns.type && <td>{TYPE_LABEL[n.type] ?? n.type}</td>}
                     {columns.connections && <td className="mono">{n.connections}</td>}
                     {columns.extra && <td className={styles.extraCell}>{n.extra || '—'}</td>}
                   </tr>
-                ))}
+                  )
+                })}
               </tbody>
             </table>
           </div>
