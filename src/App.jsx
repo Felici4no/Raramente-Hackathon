@@ -4,25 +4,20 @@ import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import TeseCentral from './components/TeseCentral.jsx';
 import WhatsAppDemo from './components/WhatsAppDemo.jsx';
+import QuaTiRareSection from './components/QuaTiRareSection.jsx';
 import JourneyDemo from './components/JourneyDemo.jsx';
-import ImpactDemo from './components/ImpactDemo.jsx';
 import DashboardDemo from './components/DashboardDemo.jsx';
+import ImpactDemo from './components/ImpactDemo.jsx';
 import BottomNav from './components/BottomNav.jsx';
 import Footer from './components/Footer.jsx';
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading]     = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
-    const fadeTimer = setTimeout(() => {
-      setIsFadingOut(true);
-    }, 1400);
-
-    const removeTimer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
+    const fadeTimer   = setTimeout(() => setIsFadingOut(true), 1400);
+    const removeTimer = setTimeout(() => setIsLoading(false), 2000);
     return () => {
       clearTimeout(fadeTimer);
       clearTimeout(removeTimer);
@@ -30,18 +25,37 @@ export default function App() {
   }, []);
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--color-bg-warm)' }}>
+    <div style={{
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      backgroundColor: 'var(--color-bg-warm)',
+    }}>
       {isLoading && <LoadingScreen isFadingOut={isFadingOut} />}
+
       <Header />
-      <main style={{ flex: 1, paddingTop: '72px', paddingBottom: '80px' }}>
+
+      {/*
+        Section order (per briefing):
+        Hero → O Problema → Território (WhatsApp/Nasua) → QuaTiRare →
+        Jornada Atípica → Dashboard → Impacto Verificado → Footer
+      */}
+      <main
+        style={{ flex: 1 }}
+        className="page-offset"
+      >
         <Hero />
         <TeseCentral />
         <WhatsAppDemo />
+        <QuaTiRareSection />
         <JourneyDemo />
-        <ImpactDemo />
         <DashboardDemo />
+        <ImpactDemo />
       </main>
+
       <Footer />
+
+      {/* BottomNav: visible on tablet/mobile only (hidden via CSS at ≥1024px) */}
       <BottomNav />
     </div>
   );
