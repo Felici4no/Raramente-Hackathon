@@ -125,16 +125,6 @@ export default function Header() {
               </a>
             </div>
 
-            {/* Mobile: CTA visível direto no header */}
-            <a
-              href="#dashboard"
-              className="header-mobile-cta"
-              aria-label="Acessar plataforma"
-            >
-              Acessar
-              <ArrowRight size={13} aria-hidden="true" />
-            </a>
-
             {/* Burger — tablet + mobile */}
             <button
               ref={burgerRef}
