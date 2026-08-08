@@ -16,6 +16,7 @@ import { AutoResearch } from '@/pages/AutoResearch'
 import { DiseaseComparator } from '@/pages/DiseaseComparator'
 import { DataExplorer } from '@/pages/DataExplorer'
 import { RarityMap } from '@/pages/RarityMap'
+import { DiseaseProfile } from '@/pages/DiseaseProfile'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -64,6 +65,14 @@ export default function App() {
                 element={
                   <PageContainer>
                     <DataExplorer />
+                  </PageContainer>
+                }
+              />
+              <Route
+                path="/research/disease/:diseaseId"
+                element={
+                  <PageContainer>
+                    <DiseaseProfile />
                   </PageContainer>
                 }
               />

@@ -4,6 +4,7 @@ import { useDebouncedValue } from '@/hooks/useDebouncedValue'
 import { useDiseaseSearch, usePhenotypeSearch } from '@/hooks/useRarasData'
 import { useQuery } from '@tanstack/react-query'
 import { searchPapersSemantic } from '@/services/raras/rarasRealService'
+import { searchWikipedia } from '@/services/wikipediaService'
 import { Tag } from '@/components/ui/Tag'
 import styles from './UniversalSearchBar.module.css'
 
@@ -25,6 +26,13 @@ export function UniversalSearchBar({ autoFocus = false }: { autoFocus?: boolean 
     enabled: debounced.trim().length >= 4,
     staleTime: 10 * 60 * 1000,
   })
+  const wiki = useQuery({
+    queryKey: ['wiki-search', debounced],
+    queryFn: () => searchWikipedia(debounced, 'pt', 3),
+    enabled: debounced.trim().length >= 3,
+    staleTime: 24 * 60 * 60 * 1000,
+    retry: 0,
+  })
 
   const lower = debounced.toLowerCase().trim()
   const caseMatch = lower.length > 0 && CASE_MATCHES.some((m) => m.includes(lower) || lower.includes(m))
@@ -42,6 +50,7 @@ export function UniversalSearchBar({ autoFocus = false }: { autoFocus?: boolean 
     (diseases.data?.data.length ?? 0) > 0 ||
     (phenotypes.data?.data.length ?? 0) > 0 ||
     (papers.data?.data.length ?? 0) > 0 ||
+    (wiki.data?.length ?? 0) > 0 ||
     caseMatch ||
     protocolMatch
 
@@ -103,7 +112,7 @@ export function UniversalSearchBar({ autoFocus = false }: { autoFocus?: boolean 
             <div className={styles.group}>
               <p className={styles.groupLabel}>DOENÇA {diseases.data?.isMock && '· demo'}</p>
               {diseases.data!.data.map((d) => (
-                <button key={d.orphaCode} className={styles.result} onClick={() => go(`/compare?orpha=${d.orphaCode}`)}>
+                <button key={d.orphaCode} className={styles.result} onClick={() => go(`/research/disease/${d.orphaCode}`)}>
                   <Tag tone="green" size="sm">
                     DOENÇA
                   </Tag>
@@ -111,6 +120,20 @@ export function UniversalSearchBar({ autoFocus = false }: { autoFocus?: boolean 
                     {d.name} <span className="mono">ORPHA:{d.orphaCode}</span>
                   </span>
                 </button>
+              ))}
+            </div>
+          )}
+
+          {(wiki.data?.length ?? 0) > 0 && (
+            <div className={styles.group}>
+              <p className={styles.groupLabel}>ENCICLOPÉDIA</p>
+              {wiki.data!.map((w) => (
+                <a key={w.id} className={styles.resultLink} href={`https://pt.wikipedia.org/wiki/${encodeURIComponent(w.key)}`} target="_blank" rel="noreferrer noopener">
+                  <Tag tone="neutral" size="sm">
+                    WIKIPEDIA PT-BR
+                  </Tag>
+                  <span>{w.title}</span>
+                </a>
               ))}
             </div>
           )}

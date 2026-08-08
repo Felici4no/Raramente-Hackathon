@@ -37,6 +37,16 @@
   flex-shrink: 0;
 }
 
+.profileLink {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--color-blue);
+  text-decoration: none;
+}
+.profileLink:hover {
+  text-decoration: underline;
+}
+
 .fields {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

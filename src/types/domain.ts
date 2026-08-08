@@ -13,6 +13,7 @@ export type SourceName =
   | 'Territory Registry'
   | 'Family Network'
   | 'Nasua / Relato de Escuta'
+  | 'Wikipedia'
 
 export type VerificationStatus = 'relato' | 'pendente' | 'verificado'
 
@@ -33,6 +34,8 @@ export type NodeType =
   | 'protocolo'
   | 'fonte'
   | 'sinal'
+  | 'doenca'
+  | 'gene'
 
 export interface CaseGraphNode {
   id: string
@@ -54,6 +57,7 @@ export type EdgeType =
   | 'similar_a'
   | 'originado_em'
   | 'gerou_protocolo'
+  | 'descrito_por'
 
 export interface CaseGraphEdge {
   id: string

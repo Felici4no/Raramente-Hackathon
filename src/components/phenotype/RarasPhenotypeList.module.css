@@ -1,0 +1,77 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.empty {
+  font-size: 12.5px;
+  color: var(--color-ink-faint);
+  font-style: italic;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 12.5px;
+}
+.item:last-child {
+  border-bottom: none;
+}
+
+.hpoId {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--color-blue);
+  flex-shrink: 0;
+  width: 88px;
+}
+
+.itemLabel {
+  flex: 1;
+  color: var(--color-ink);
+}
+
+.frequency {
+  font-size: 10.5px;
+  color: var(--color-ink-faint);
+  flex-shrink: 0;
+}
+
+.source {
+  padding-top: 8px;
+  border-top: 1px dashed var(--color-border);
+  font-size: 10.5px;
+  color: var(--color-ink-faint);
+}

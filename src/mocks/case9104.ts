@@ -470,6 +470,12 @@ export const sourceRegistry: SourceDescriptor[] = [
     description: 'Transcrição de áudio de campo (ACS) processada por IA. Não verificado clinicamente até confirmação.',
     reliability: 'variavel',
   },
+  {
+    name: 'Wikipedia',
+    kind: 'API',
+    description: 'Fonte contextual/enciclopédica sobre a condição (PT-BR, com fallback EN). Nunca tratada como evidência clínica — RARAS e HPO permanecem a camada investigativa principal.',
+    reliability: 'variavel',
+  },
 ]
 
 // ---------------------------------------------------------------------------

@@ -9,6 +9,8 @@ export const NODE_TYPE_META: Record<NodeType, { label: string; color: string; bg
   protocolo: { label: 'Protocolo', color: '#14243a', bg: '#dbe1ea' },
   fonte: { label: 'Fonte', color: '#6b7688', bg: '#ece5d5' },
   sinal: { label: 'Sinal / Conexão', color: '#a6321f', bg: '#f5e4dc' },
+  doenca: { label: 'Doença', color: '#4c3575', bg: '#e8e1f0' },
+  gene: { label: 'Gene', color: '#0e7c86', bg: '#dcf0f2' },
 }
 
 export const EDGE_TYPE_LABEL: Record<EdgeType, string> = {
@@ -20,4 +22,5 @@ export const EDGE_TYPE_LABEL: Record<EdgeType, string> = {
   similar_a: 'similar a',
   originado_em: 'originado em',
   gerou_protocolo: 'gerou protocolo',
+  descrito_por: 'descrito por',
 }

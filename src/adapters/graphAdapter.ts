@@ -1,7 +1,7 @@
 import type { Edge, Node } from '@xyflow/react'
 import type { CaseGraphEdge, CaseGraphNode, GraphMode, NodeType } from '@/types/domain'
 
-const COLUMN_ORDER: NodeType[] = ['familiar', 'pessoa', 'servico', 'evento', 'fenotipo', 'protocolo', 'sinal', 'fonte']
+const COLUMN_ORDER: NodeType[] = ['familiar', 'pessoa', 'doenca', 'servico', 'gene', 'evento', 'fenotipo', 'protocolo', 'sinal', 'fonte']
 
 const COLUMN_X: Record<NodeType, number> = COLUMN_ORDER.reduce((acc, type, i) => {
   acc[type] = i * 250
@@ -44,10 +44,10 @@ export function toFlowGraph(nodes: CaseGraphNode[], edges: CaseGraphEdge[]): { f
 }
 
 const MODE_NODE_TYPES: Record<GraphMode, NodeType[]> = {
-  assistencial: ['pessoa', 'familiar', 'servico', 'evento', 'protocolo'],
-  fenotipico: ['pessoa', 'fenotipo', 'evento', 'protocolo'],
-  familiar: ['pessoa', 'familiar', 'evento', 'sinal'],
-  proveniencia: ['pessoa', 'fonte', 'evento', 'fenotipo', 'protocolo'],
+  assistencial: ['pessoa', 'familiar', 'servico', 'evento', 'protocolo', 'doenca'],
+  fenotipico: ['pessoa', 'fenotipo', 'evento', 'protocolo', 'doenca', 'gene'],
+  familiar: ['pessoa', 'familiar', 'evento', 'sinal', 'doenca'],
+  proveniencia: ['pessoa', 'fonte', 'evento', 'fenotipo', 'protocolo', 'doenca'],
 }
 
 /** Dims nodes that fall outside the active investigative mode, without removing them from the canvas. */

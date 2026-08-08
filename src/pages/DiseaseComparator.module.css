@@ -151,10 +151,38 @@
   color: var(--color-terracotta);
 }
 
+.profileLink {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--color-blue);
+  text-decoration: none;
+}
+.profileLink:hover {
+  text-decoration: underline;
+}
+
 .chipCell {
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
+}
+
+.wikiCell {
+  max-width: 260px;
+}
+
+.wikiText {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--color-ink-soft);
+}
+
+.wikiCellBadge {
+  margin-top: 6px;
 }
 
 .hpoChip {

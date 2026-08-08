@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import type { RarasDiseaseCandidate } from '@/types/raras'
 import { useDiseaseDetail, useActiveTrials, useReferenceCenters, useSusCoverage, usePapersForDisease, useEvidence } from '@/hooks/useRarasData'
 import { Tag } from '@/components/ui/Tag'
@@ -47,6 +48,9 @@ export function CandidateCard({ candidate, caseHpo }: { candidate: RarasDiseaseC
         <div className={styles.headerRight}>
           <Tag tone="terracotta">{candidate.matchPercent}% match HPO</Tag>
           {detail.data && <DataSourceBadge isMock={detail.data.isMock} />}
+          <Link className={styles.profileLink} to={`/research/disease/${candidate.orphaCode}`}>
+            Abrir perfil →
+          </Link>
         </div>
       </div>
 

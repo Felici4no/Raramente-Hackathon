@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useDiseaseSearch, useDiseaseDetail, useSusCoverage, useActiveTrials, usePapersForDisease, useReferenceCenters } from '@/hooks/useRarasData'
+import { useWikipediaMatch, useWikipediaSummary } from '@/hooks/useWikipedia'
 import { useDebouncedValue } from '@/hooks/useDebouncedValue'
 import { caseSummary, phenotypes as case9104Phenotypes } from '@/mocks/case9104'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Panel } from '@/components/ui/Panel'
 import { Tag } from '@/components/ui/Tag'
 import { DataSourceBadge } from '@/components/provenance/DataSourceBadge'
+import { WikipediaSourceBadge } from '@/components/wikipedia/WikipediaSourceBadge'
 import { ExportCsvButton } from '@/components/ui/ExportCsvButton'
 import type { ExportRow } from '@/utils/exportCsv'
 import styles from './DiseaseComparator.module.css'
@@ -19,7 +21,9 @@ function useComparisonColumn(orphaCode: string | null) {
   const trials = useActiveTrials(orphaCode)
   const papers = usePapersForDisease(orphaCode, 10)
   const centers = useReferenceCenters(orphaCode)
-  return { orphaCode, detail, sus, trials, papers, centers }
+  const wikiMatch = useWikipediaMatch(orphaCode, detail.data?.data.name ?? null)
+  const wikiSummary = useWikipediaSummary(wikiMatch.data)
+  return { orphaCode, detail, sus, trials, papers, centers, wikiMatch, wikiSummary }
 }
 
 type ComparisonColumn = ReturnType<typeof useComparisonColumn>
@@ -37,6 +41,7 @@ const ROW_LABELS = [
   'Ensaios clínicos',
   'Centros de referência',
   'Papers relacionados',
+  'Contexto (Wikipedia)',
 ]
 
 function renderDiseaseCell(col: ComparisonColumn, rowIndex: number) {
@@ -75,6 +80,10 @@ function renderDiseaseCell(col: ComparisonColumn, rowIndex: number) {
       return col.centers.data ? col.centers.data.data.length : '—'
     case 11:
       return col.papers.data ? col.papers.data.data.length : '—'
+    case 12:
+      if (col.wikiMatch.isLoading || col.wikiSummary.isLoading) return '…'
+      if (col.wikiMatch.data?.matchMethod === 'NO_MATCH') return 'Sem página Wikipedia associada.'
+      return col.wikiSummary.data?.extract ?? '—'
     default:
       return '—'
   }
@@ -128,7 +137,7 @@ export function DiseaseComparator() {
       entity_type: 'DOENCA_ATRIBUTO',
       label,
       value: typeof renderDiseaseCell(col, i) === 'string' ? (renderDiseaseCell(col, i) as string) : `${col.detail.data?.data.phenotypes.length ?? 0} itens`,
-      source: 'Raras Knowledge Graph (MCP)',
+      source: label === 'Contexto (Wikipedia)' ? 'Wikipedia' : 'Raras Knowledge Graph (MCP)',
       source_id: col.orphaCode ?? '',
       verification_status: col.detail.data?.isMock ? 'demo' : 'verificado',
       retrieved_at: col.detail.data?.retrievedAt ?? new Date().toISOString(),
@@ -209,6 +218,9 @@ export function DiseaseComparator() {
                       </button>
                       <p className={styles.columnName}>{col.detail.data?.data.name ?? `ORPHA:${col.orphaCode}`}</p>
                       {col.detail.data && <DataSourceBadge isMock={col.detail.data.isMock} />}
+                      <Link className={styles.profileLink} to={`/research/disease/${col.orphaCode}`}>
+                        Abrir perfil →
+                      </Link>
                     </div>
                   </th>
                 ))}
@@ -218,10 +230,15 @@ export function DiseaseComparator() {
               {ROW_LABELS.map((label, i) => (
                 <tr key={label}>
                   <td className={styles.rowLabelCell}>{label}</td>
-                  {includeCase && <td className={i === 6 ? styles.chipCell : undefined}>{renderCaseCell(i)}</td>}
+                  {includeCase && <td className={i === 6 ? styles.chipCell : i === 12 ? styles.wikiCell : undefined}>{renderCaseCell(i)}</td>}
                   {columns.map((col) => (
-                    <td key={col.orphaCode} className={i === 6 ? styles.chipCell : undefined}>
-                      {renderDiseaseCell(col, i)}
+                    <td key={col.orphaCode} className={i === 6 ? styles.chipCell : i === 12 ? styles.wikiCell : undefined}>
+                      {i === 12 ? <span className={styles.wikiText}>{renderDiseaseCell(col, i)}</span> : renderDiseaseCell(col, i)}
+                      {i === 12 && col.wikiMatch.data?.matchMethod && col.wikiMatch.data.matchMethod !== 'NO_MATCH' && (
+                        <div className={styles.wikiCellBadge}>
+                          <WikipediaSourceBadge />
+                        </div>
+                      )}
                     </td>
                   ))}
                 </tr>
