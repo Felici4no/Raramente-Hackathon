@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import LoadingScreen from './components/LoadingScreen.jsx';
+import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import TeseCentral from './components/TeseCentral.jsx';
 import WhatsAppDemo from './components/WhatsAppDemo.jsx';
@@ -31,7 +32,8 @@ export default function App() {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--color-bg-warm)' }}>
       {isLoading && <LoadingScreen isFadingOut={isFadingOut} />}
-      <main style={{ flex: 1 }}>
+      <Header />
+      <main style={{ flex: 1, paddingTop: '72px' }}>
         <Hero />
         <TeseCentral />
         <WhatsAppDemo />

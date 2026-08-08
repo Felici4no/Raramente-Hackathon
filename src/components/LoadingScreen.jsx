@@ -29,7 +29,7 @@ export default function LoadingScreen({ isFadingOut }) {
             width: '140px', 
             height: '140px', 
             objectFit: 'contain',
-            borderRadius: '24px',
+            borderRadius: '12px',
             boxShadow: '0 12px 36px rgba(11, 107, 43, 0.15)',
             marginBottom: '24px'
           }} 
@@ -39,7 +39,7 @@ export default function LoadingScreen({ isFadingOut }) {
           width: '200px',
           height: '4px',
           backgroundColor: 'rgba(11, 107, 43, 0.15)',
-          borderRadius: '9999px',
+          borderRadius: '4px',
           overflow: 'hidden',
           marginBottom: '20px'
         }}>
@@ -47,7 +47,7 @@ export default function LoadingScreen({ isFadingOut }) {
             width: '100%',
             height: '100%',
             backgroundColor: '#0B6B2B',
-            borderRadius: '9999px',
+            borderRadius: '4px',
             animation: 'loadingBar 1.4s cubic-bezier(0.65, 0, 0.35, 1) infinite'
           }} />
         </div>

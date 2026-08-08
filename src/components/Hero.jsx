@@ -3,25 +3,8 @@ import { ArrowRight, Compass, ShieldCheck, Sparkles, AlertCircle } from 'lucide-
 
 export default function Hero() {
   return (
-    <section className="section" style={{ paddingTop: '40px', paddingBottom: '72px' }}>
+    <section className="section" style={{ paddingTop: '32px', paddingBottom: '72px' }}>
       <div className="container">
-        
-        {/* Brand Logo Header no topo da Hero */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '40px' }}>
-          <a href="#" style={{ display: 'inline-block' }}>
-            <img 
-              src="/logo.png" 
-              alt="Agente na Sua Logo" 
-              style={{ height: '54px', width: 'auto', objectFit: 'contain' }} 
-            />
-          </a>
-
-          <span className="badge badge-primary" style={{ textTransform: 'none', fontWeight: 700, fontSize: '0.82rem' }}>
-            <ShieldCheck size={14} />
-            Plataforma SUS
-          </span>
-        </div>
-
         <div className="grid-2col">
           
           {/* Coluna Esquerda - Texto */}
@@ -39,7 +22,7 @@ export default function Hero() {
               Unimos informações do território, jornada no SUS e inteligência artificial para identificar trajetórias que fogem do comum e apoiar a descoberta precoce de pacientes que precisam de investigação.
             </p>
 
-            <div style={{ padding: '16px 20px', background: '#FFFFFF', borderRadius: '16px', borderLeft: '4px solid #8B5A2B', marginBottom: '32px', boxShadow: '0 4px 16px rgba(0,0,0,0.03)' }}>
+            <div style={{ padding: '16px 20px', background: '#FFFFFF', borderRadius: '8px', borderLeft: '4px solid #8B5A2B', marginBottom: '32px', boxShadow: '0 4px 16px rgba(0,0,0,0.03)' }}>
               <p style={{ fontStyle: 'italic', fontWeight: 600, color: '#4A2F1B', fontSize: '0.95rem' }}>
                 "O paciente raro deixa uma jornada. Nós ajudamos a encontrá-la."
               </p>
@@ -60,7 +43,7 @@ export default function Hero() {
 
           {/* Coluna Direita - Mockup do Mascote & Card Interativo */}
           <div className="animate-fade-in" style={{ position: 'relative' }}>
-            <div className="card" style={{ background: 'linear-gradient(145deg, #FFFFFF 0%, #F9F7F1 100%)', borderRadius: '28px', border: '1px solid #E2DDD3', padding: '28px', position: 'relative', overflow: 'hidden' }}>
+            <div className="card" style={{ background: 'linear-gradient(145deg, #FFFFFF 0%, #F9F7F1 100%)', borderRadius: '12px', border: '1px solid #E2DDD3', padding: '28px', position: 'relative', overflow: 'hidden' }}>
               
               {/* Badge Flutuante no topo do Card */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
@@ -79,7 +62,7 @@ export default function Hero() {
               </div>
 
               {/* Simulação rápida de card no Hero */}
-              <div style={{ background: '#FFFFFF', borderRadius: '16px', padding: '20px', border: '1px solid #EBE7DE', marginBottom: '20px' }}>
+              <div style={{ background: '#FFFFFF', borderRadius: '8px', padding: '20px', border: '1px solid #EBE7DE', marginBottom: '20px' }}>
                 <div style={{ fontSize: '0.8rem', color: '#8B5A2B', fontWeight: 700, marginBottom: '6px' }}>
                   MICROÁREA 04 • ACS ANA
                 </div>
@@ -87,13 +70,13 @@ export default function Hero() {
                   Paciente J.S.M. (7 anos)
                 </div>
                 <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                  <span style={{ background: '#FEF3C7', color: '#B45309', padding: '4px 10px', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 600 }}>
+                  <span style={{ background: '#FEF3C7', color: '#B45309', padding: '4px 10px', borderRadius: '4px', fontSize: '0.78rem', fontWeight: 600 }}>
                     • Atraso motor persistente
                   </span>
-                  <span style={{ background: '#FEF3C7', color: '#B45309', padding: '4px 10px', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 600 }}>
+                  <span style={{ background: '#FEF3C7', color: '#B45309', padding: '4px 10px', borderRadius: '4px', fontSize: '0.78rem', fontWeight: 600 }}>
                     • Recorrência familiar
                   </span>
-                  <span style={{ background: '#E8F5E9', color: '#0B6B2B', padding: '4px 10px', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 600 }}>
+                  <span style={{ background: '#E8F5E9', color: '#0B6B2B', padding: '4px 10px', borderRadius: '4px', fontSize: '0.78rem', fontWeight: 600 }}>
                     • 11 atendimentos sem diagnóstico
                   </span>
                 </div>

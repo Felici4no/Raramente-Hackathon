@@ -23,7 +23,7 @@ export default function DashboardDemo() {
         </div>
 
         {/* Funil de Dados do Território */}
-        <div style={{ background: '#F4F1E8', borderRadius: '24px', padding: '32px 20px', marginBottom: '40px', border: '1px solid #E2DDD3' }}>
+        <div style={{ background: '#F4F1E8', borderRadius: '12px', padding: '32px 20px', marginBottom: '40px', border: '1px solid #E2DDD3' }}>
           <div style={{ fontWeight: 800, color: '#4A2F1B', fontSize: '0.85rem', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '20px', textAlign: 'center' }}>
             Funil Epidemiológico do Território • Distrito Sanitário Sul
           </div>
@@ -36,7 +36,7 @@ export default function DashboardDemo() {
               style={{ 
                 background: activeTab === 'todos' ? '#FFFFFF' : '#F4F1E8',
                 border: activeTab === 'todos' ? '2px solid #0B6B2B' : '1px solid #E2DDD3',
-                borderRadius: '16px', padding: '16px', cursor: 'pointer', transition: 'all 0.2s', textAlign: 'center'
+                borderRadius: '8px', padding: '16px', cursor: 'pointer', transition: 'all 0.2s', textAlign: 'center'
               }}
             >
               <div style={{ fontSize: '0.75rem', color: '#6B655F', fontWeight: 700 }}>1. POPULAÇÃO ADSTRITA</div>
@@ -52,7 +52,7 @@ export default function DashboardDemo() {
               style={{ 
                 background: activeTab === 'recorrentes' ? '#FFFFFF' : '#F4F1E8',
                 border: activeTab === 'recorrentes' ? '2px solid #2E8B3C' : '1px solid #E2DDD3',
-                borderRadius: '16px', padding: '16px', cursor: 'pointer', transition: 'all 0.2s', textAlign: 'center'
+                borderRadius: '8px', padding: '16px', cursor: 'pointer', transition: 'all 0.2s', textAlign: 'center'
               }}
             >
               <div style={{ fontSize: '0.75rem', color: '#6B655F', fontWeight: 700 }}>2. JORNADAS RECORRENTES</div>
@@ -68,7 +68,7 @@ export default function DashboardDemo() {
               style={{ 
                 background: activeTab === 'atipicas' ? '#FFFFFF' : '#F4F1E8',
                 border: activeTab === 'atipicas' ? '2px solid #F59E0B' : '1px solid #E2DDD3',
-                borderRadius: '16px', padding: '16px', cursor: 'pointer', transition: 'all 0.2s', textAlign: 'center'
+                borderRadius: '8px', padding: '16px', cursor: 'pointer', transition: 'all 0.2s', textAlign: 'center'
               }}
             >
               <div style={{ fontSize: '0.75rem', color: '#B45309', fontWeight: 700 }}>3. JORNADAS ATÍPICAS</div>
@@ -84,7 +84,7 @@ export default function DashboardDemo() {
               style={{ 
                 background: activeTab === 'prioritarios' ? '#FEF3C7' : '#F4F1E8',
                 border: activeTab === 'prioritarios' ? '2px solid #D97706' : '1px solid #E2DDD3',
-                borderRadius: '16px', padding: '16px', cursor: 'pointer', transition: 'all 0.2s', textAlign: 'center',
+                borderRadius: '8px', padding: '16px', cursor: 'pointer', transition: 'all 0.2s', textAlign: 'center',
                 boxShadow: activeTab === 'prioritarios' ? '0 8px 20px rgba(217,119,6,0.15)' : 'none'
               }}
             >
@@ -97,7 +97,7 @@ export default function DashboardDemo() {
         </div>
 
         {/* Simulador de Mapa Agregado do Territorio */}
-        <div className="card" style={{ background: '#FAF8F5', border: '1px solid #E2DDD3', marginBottom: '56px' }}>
+        <div className="card" style={{ background: '#FAF8F5', border: '1px solid #E2DDD3', marginBottom: '56px', borderRadius: '12px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '16px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <MapPin size={22} color="#0B6B2B" style={{ flexShrink: 0 }} />
@@ -116,7 +116,7 @@ export default function DashboardDemo() {
           {/* Grid de Microareas do Mapa */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '14px' }}>
             
-            <div style={{ background: '#FFFFFF', padding: '16px', borderRadius: '12px', border: '1px solid #EBE7DE', borderTop: '4px solid #D97706' }}>
+            <div style={{ background: '#FFFFFF', padding: '16px', borderRadius: '8px', border: '1px solid #EBE7DE', borderTop: '4px solid #D97706' }}>
               <div style={{ fontWeight: 800, color: '#4A2F1B', fontSize: '0.9rem' }}>Microárea 04</div>
               <div style={{ fontSize: '0.8rem', color: '#8B5A2B', marginTop: '2px' }}>ACS Ana • 1.420 pts</div>
               <div style={{ marginTop: '12px', display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', fontWeight: 700 }}>
@@ -125,7 +125,7 @@ export default function DashboardDemo() {
               </div>
             </div>
 
-            <div style={{ background: '#FFFFFF', padding: '16px', borderRadius: '12px', border: '1px solid #EBE7DE', borderTop: '4px solid #0B6B2B' }}>
+            <div style={{ background: '#FFFFFF', padding: '16px', borderRadius: '8px', border: '1px solid #EBE7DE', borderTop: '4px solid #0B6B2B' }}>
               <div style={{ fontWeight: 800, color: '#4A2F1B', fontSize: '0.9rem' }}>Microárea 01</div>
               <div style={{ fontSize: '0.8rem', color: '#8B5A2B', marginTop: '2px' }}>ACS Carlos • 980 pts</div>
               <div style={{ marginTop: '12px', display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', fontWeight: 700 }}>
@@ -134,7 +134,7 @@ export default function DashboardDemo() {
               </div>
             </div>
 
-            <div style={{ background: '#FFFFFF', padding: '16px', borderRadius: '12px', border: '1px solid #EBE7DE', borderTop: '4px solid #D97706' }}>
+            <div style={{ background: '#FFFFFF', padding: '16px', borderRadius: '8px', border: '1px solid #EBE7DE', borderTop: '4px solid #D97706' }}>
               <div style={{ fontWeight: 800, color: '#4A2F1B', fontSize: '0.9rem' }}>Microárea 03</div>
               <div style={{ fontSize: '0.8rem', color: '#8B5A2B', marginTop: '2px' }}>ACS Beatriz • 1.150 pts</div>
               <div style={{ marginTop: '12px', display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', fontWeight: 700 }}>
@@ -143,7 +143,7 @@ export default function DashboardDemo() {
               </div>
             </div>
 
-            <div style={{ background: '#FFFFFF', padding: '16px', borderRadius: '12px', border: '1px solid #EBE7DE', borderTop: '4px solid #2E8B3C' }}>
+            <div style={{ background: '#FFFFFF', padding: '16px', borderRadius: '8px', border: '1px solid #EBE7DE', borderTop: '4px solid #2E8B3C' }}>
               <div style={{ fontWeight: 800, color: '#4A2F1B', fontSize: '0.9rem' }}>Microárea 02</div>
               <div style={{ fontSize: '0.8rem', color: '#8B5A2B', marginTop: '2px' }}>ACS Eduardo • 890 pts</div>
               <div style={{ marginTop: '12px', display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', fontWeight: 700 }}>
@@ -158,7 +158,7 @@ export default function DashboardDemo() {
         {/* BANNER CTA FINAL */}
         <div style={{ 
           background: 'linear-gradient(135deg, #0B6B2B 0%, #085221 100%)', 
-          borderRadius: '28px', 
+          borderRadius: '12px', 
           padding: '40px 24px', 
           color: '#FFFFFF', 
           textAlign: 'center',

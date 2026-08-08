@@ -27,7 +27,7 @@ export default function JourneyDemo() {
             onClick={() => setSelectedPatient('comum')}
             style={{
               padding: '12px 20px',
-              borderRadius: '9999px',
+              borderRadius: '8px',
               border: selectedPatient === 'comum' ? '2px solid #57B33E' : '1px solid #E2DDD3',
               background: selectedPatient === 'comum' ? '#E8F5E9' : '#FFFFFF',
               color: selectedPatient === 'comum' ? '#0B6B2B' : '#4A2F1B',
@@ -48,7 +48,7 @@ export default function JourneyDemo() {
             onClick={() => setSelectedPatient('atipico')}
             style={{
               padding: '12px 20px',
-              borderRadius: '9999px',
+              borderRadius: '8px',
               border: selectedPatient === 'atipico' ? '2px solid #F59E0B' : '1px solid #E2DDD3',
               background: selectedPatient === 'atipico' ? '#FEF3C7' : '#FFFFFF',
               color: selectedPatient === 'atipico' ? '#B45309' : '#4A2F1B',
@@ -69,41 +69,41 @@ export default function JourneyDemo() {
         {/* Card Comparativo de Jornada */}
         <div style={{ maxWidth: '960px', margin: '0 auto' }}>
           {selectedPatient === 'comum' ? (
-            <div className="card" style={{ borderLeft: '6px solid #57B33E', background: '#FFFFFF' }}>
+            <div className="card" style={{ borderLeft: '6px solid #57B33E', background: '#FFFFFF', borderRadius: '12px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
                 <div>
                   <div style={{ fontSize: '0.85rem', color: '#6B655F', fontWeight: 600 }}>CASO #8401 • UBS CENTRO</div>
                   <h3 style={{ fontSize: '1.4rem', color: '#4A2F1B', fontWeight: 800 }}>Paciente M.A.S. (34 anos)</h3>
                 </div>
-                <div style={{ background: '#E8F5E9', color: '#0B6B2B', padding: '8px 18px', borderRadius: '9999px', fontWeight: 800, fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ background: '#E8F5E9', color: '#0B6B2B', padding: '8px 18px', borderRadius: '6px', fontWeight: 800, fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <CheckCircle size={18} />
                   <span>JORNADA COMUM</span>
                 </div>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px', marginBottom: '28px' }}>
-                <div style={{ background: '#F4F1E8', padding: '16px', borderRadius: '12px' }}>
+                <div style={{ background: '#F4F1E8', padding: '16px', borderRadius: '8px' }}>
                   <div style={{ fontSize: '0.8rem', color: '#8B5A2B', fontWeight: 600 }}>ATENDIMENTOS</div>
                   <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#4A2F1B' }}>2 consultas</div>
                 </div>
 
-                <div style={{ background: '#F4F1E8', padding: '16px', borderRadius: '12px' }}>
+                <div style={{ background: '#F4F1E8', padding: '16px', borderRadius: '8px' }}>
                   <div style={{ fontSize: '0.8rem', color: '#8B5A2B', fontWeight: 600 }}>ESPECIALIDADES</div>
                   <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#4A2F1B' }}>1 (Clínico Geral)</div>
                 </div>
 
-                <div style={{ background: '#F4F1E8', padding: '16px', borderRadius: '12px' }}>
+                <div style={{ background: '#F4F1E8', padding: '16px', borderRadius: '8px' }}>
                   <div style={{ fontSize: '0.8rem', color: '#8B5A2B', fontWeight: 600 }}>DURAÇÃO</div>
                   <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#4A2F1B' }}>15 dias</div>
                 </div>
 
-                <div style={{ background: '#F4F1E8', padding: '16px', borderRadius: '12px' }}>
+                <div style={{ background: '#F4F1E8', padding: '16px', borderRadius: '8px' }}>
                   <div style={{ fontSize: '0.8rem', color: '#8B5A2B', fontWeight: 600 }}>DESFECHO</div>
                   <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#0B6B2B' }}>Resolução pós-tratamento</div>
                 </div>
               </div>
 
-              <div style={{ background: '#F8F9FA', borderRadius: '12px', padding: '16px 20px', border: '1px solid #EBE7DE' }}>
+              <div style={{ background: '#F8F9FA', borderRadius: '8px', padding: '16px 20px', border: '1px solid #EBE7DE' }}>
                 <div style={{ fontWeight: 700, color: '#4A2F1B', fontSize: '0.95rem', marginBottom: '6px' }}>Análise de Padrão Territorial:</div>
                 <p style={{ fontSize: '0.9rem', color: '#6B655F' }}>
                   Trajetória clínica compatível com infecção aguda tratável. Sem reincidência de sintomas ou inconsistências de histórico familiar.
@@ -111,14 +111,14 @@ export default function JourneyDemo() {
               </div>
             </div>
           ) : (
-            <div className="card animate-fade-in" style={{ borderLeft: '6px solid #D97706', background: '#FFFFFF', boxShadow: '0 12px 32px rgba(217, 119, 6, 0.12)' }}>
+            <div className="card animate-fade-in" style={{ borderLeft: '6px solid #D97706', background: '#FFFFFF', boxShadow: '0 12px 32px rgba(217, 119, 6, 0.12)', borderRadius: '12px' }}>
               
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
                 <div>
                   <div style={{ fontSize: '0.85rem', color: '#6B655F', fontWeight: 600 }}>CASO #9104 • MICROÁREA 04 (ACS ANA)</div>
                   <h3 style={{ fontSize: '1.4rem', color: '#4A2F1B', fontWeight: 800 }}>Paciente J.S.M. (7 anos)</h3>
                 </div>
-                <div style={{ background: '#FEF3C7', color: '#B45309', padding: '8px 18px', borderRadius: '9999px', fontWeight: 800, fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '8px', border: '1px solid #FDE68A' }}>
+                <div style={{ background: '#FEF3C7', color: '#B45309', padding: '8px 18px', borderRadius: '6px', fontWeight: 800, fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '8px', border: '1px solid #FDE68A' }}>
                   <AlertTriangle size={18} />
                   <span>JORNADA ATÍPICA DETECTADA</span>
                 </div>
@@ -126,45 +126,45 @@ export default function JourneyDemo() {
 
               {/* Grid de Metricas da Atipicidade */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px', marginBottom: '28px' }}>
-                <div style={{ background: '#FEF3C7', padding: '16px', borderRadius: '12px', border: '1px solid #FDE68A' }}>
+                <div style={{ background: '#FEF3C7', padding: '16px', borderRadius: '8px', border: '1px solid #FDE68A' }}>
                   <div style={{ fontSize: '0.8rem', color: '#B45309', fontWeight: 700 }}>ATENDIMENTOS</div>
                   <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#92400E' }}>11 registros</div>
                 </div>
 
-                <div style={{ background: '#FEF3C7', padding: '16px', borderRadius: '12px', border: '1px solid #FDE68A' }}>
+                <div style={{ background: '#FEF3C7', padding: '16px', borderRadius: '8px', border: '1px solid #FDE68A' }}>
                   <div style={{ fontSize: '0.8rem', color: '#B45309', fontWeight: 700 }}>ESPECIALIDADES</div>
                   <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#92400E' }}>4 consultas distintas</div>
                 </div>
 
-                <div style={{ background: '#FEF3C7', padding: '16px', borderRadius: '12px', border: '1px solid #FDE68A' }}>
+                <div style={{ background: '#FEF3C7', padding: '16px', borderRadius: '8px', border: '1px solid #FDE68A' }}>
                   <div style={{ fontSize: '0.8rem', color: '#B45309', fontWeight: 700 }}>TEMPO SEM RESOLUÇÃO</div>
                   <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#92400E' }}>3 anos em investigação</div>
                 </div>
 
-                <div style={{ background: '#FEF3C7', padding: '16px', borderRadius: '12px', border: '1px solid #FDE68A' }}>
+                <div style={{ background: '#FEF3C7', padding: '16px', borderRadius: '8px', border: '1px solid #FDE68A' }}>
                   <div style={{ fontSize: '0.8rem', color: '#B45309', fontWeight: 700 }}>HISTÓRICO FAMILIAR</div>
                   <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#92400E' }}>Positivo (Pai com fraqueza)</div>
                 </div>
               </div>
 
               {/* Destaque de Explicabilidade - 4 Sinais Encontrados */}
-              <div style={{ background: '#FFFBEB', borderRadius: '16px', padding: '20px', border: '1px solid #FCD34D' }}>
+              <div style={{ background: '#FFFBEB', borderRadius: '8px', padding: '20px', border: '1px solid #FCD34D' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px', color: '#B45309', fontWeight: 800, fontSize: '1.05rem' }}>
                   <ShieldAlert size={20} />
                   <span>4 SINAIS ENCONTRADOS QUE JUSTIFICAM A ATIPICIDADE</span>
                 </div>
 
                 <div className="grid-signals">
-                  <div style={{ background: '#FFFFFF', padding: '12px 16px', borderRadius: '10px', borderLeft: '4px solid #D97706', fontSize: '0.9rem', fontWeight: 700, color: '#4A2F1B' }}>
+                  <div style={{ background: '#FFFFFF', padding: '12px 16px', borderRadius: '6px', borderLeft: '4px solid #D97706', fontSize: '0.9rem', fontWeight: 700, color: '#4A2F1B' }}>
                     • Longa jornada no SUS sem resolução clínica (3 anos)
                   </div>
-                  <div style={{ background: '#FFFFFF', padding: '12px 16px', borderRadius: '10px', borderLeft: '4px solid #D97706', fontSize: '0.9rem', fontWeight: 700, color: '#4A2F1B' }}>
+                  <div style={{ background: '#FFFFFF', padding: '12px 16px', borderRadius: '6px', borderLeft: '4px solid #D97706', fontSize: '0.9rem', fontWeight: 700, color: '#4A2F1B' }}>
                     • Peregrinação por múltiplas especialidades isoladas (4 áreas)
                   </div>
-                  <div style={{ background: '#FFFFFF', padding: '12px 16px', borderRadius: '10px', borderLeft: '4px solid #D97706', fontSize: '0.9rem', fontWeight: 700, color: '#4A2F1B' }}>
+                  <div style={{ background: '#FFFFFF', padding: '12px 16px', borderRadius: '6px', borderLeft: '4px solid #D97706', fontSize: '0.9rem', fontWeight: 700, color: '#4A2F1B' }}>
                     • Manifestação motora precoce na infância (dificuldade ao andar)
                   </div>
-                  <div style={{ background: '#FFFFFF', padding: '12px 16px', borderRadius: '10px', borderLeft: '4px solid #D97706', fontSize: '0.9rem', fontWeight: 700, color: '#4A2F1B' }}>
+                  <div style={{ background: '#FFFFFF', padding: '12px 16px', borderRadius: '6px', borderLeft: '4px solid #D97706', fontSize: '0.9rem', fontWeight: 700, color: '#4A2F1B' }}>
                     • Recorrência familiar confirmada em visita domiciliar do ACS
                   </div>
                 </div>

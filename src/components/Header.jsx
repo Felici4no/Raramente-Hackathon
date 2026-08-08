@@ -1,16 +1,30 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, ShieldCheck } from 'lucide-react';
 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 15);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="header-nav">
+    <header className={`header-nav ${scrolled ? 'scrolled' : ''}`}>
       <div className="container header-content">
         <a href="#" className="logo-group">
           <img 
             src="/logo.png" 
             alt="Agente na Sua Logo" 
-            style={{ height: '46px', width: 'auto', objectFit: 'contain', display: 'block' }} 
+            className="header-logo"
           />
+          <span className="badge badge-primary header-badge">
+            <ShieldCheck size={13} />
+            Plataforma SUS
+          </span>
         </a>
 
         <nav className="desktop-nav">
@@ -23,7 +37,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        <a href="#dashboard" className="btn btn-primary header-btn" style={{ padding: '10px 20px', fontSize: '0.88rem', flexShrink: 0 }}>
+        <a href="#dashboard" className="btn btn-primary header-btn">
           <span>Acessar o app</span>
           <ArrowRight size={15} />
         </a>
@@ -31,3 +45,4 @@ export default function Header() {
     </header>
   );
 }
+
