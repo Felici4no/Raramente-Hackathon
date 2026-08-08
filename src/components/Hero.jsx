@@ -1,6 +1,8 @@
 import React from 'react';
 import { ArrowRight, ArrowDown, Sparkles, ShieldCheck, MessageSquare } from 'lucide-react';
 
+const APP_URL = 'https://agentenasua.vercel.app';
+
 /* ── Ecosystem diagram: right column ── */
 function EcosystemDiagram() {
   return (
@@ -221,7 +223,9 @@ export default function Hero() {
             {/* CTAs */}
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '20px' }}>
               <a
-                href="#dashboard"
+                href={APP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn btn-primary"
                 style={{ flex: '1 1 auto', minWidth: '190px' }}
               >

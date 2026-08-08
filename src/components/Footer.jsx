@@ -1,6 +1,8 @@
 import React from 'react';
 import { Heart, ShieldCheck } from 'lucide-react';
 
+const CORE_URL = 'https://quatirare.vercel.app';
+
 export default function Footer() {
   return (
     <footer style={{ background: '#231C18', color: '#F4F1E8', padding: '60px 0 32px', borderTop: '4px solid #0B6B2B' }}>
@@ -27,11 +29,12 @@ export default function Footer() {
           <div>
             <h4 style={{ color: '#FFFFFF', fontSize: '1.05rem', fontWeight: 700, marginBottom: '16px' }}>Navegação</h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.9rem', color: '#B0A8A0' }}>
-              <li><a href="#tese" style={{ color: 'inherit', textDecoration: 'none' }}>A Tese Algorítmica</a></li>
-              <li><a href="#whatsapp" style={{ color: 'inherit', textDecoration: 'none' }}>Escuta Territorial & WhatsApp</a></li>
-              <li><a href="#jornada" style={{ color: 'inherit', textDecoration: 'none' }}>Inteligência de Jornada</a></li>
-              <li><a href="#impacto" style={{ color: 'inherit', textDecoration: 'none' }}>Impacto Verificado</a></li>
-              <li><a href="#dashboard" style={{ color: 'inherit', textDecoration: 'none' }}>Dashboard de Gestão</a></li>
+              <li><a href="/#tese" style={{ color: 'inherit', textDecoration: 'none' }}>A Tese Algorítmica</a></li>
+              <li><a href="/#whatsapp" style={{ color: 'inherit', textDecoration: 'none' }}>Escuta Territorial & WhatsApp</a></li>
+              <li><a href="/#jornada" style={{ color: 'inherit', textDecoration: 'none' }}>Inteligência de Jornada</a></li>
+              <li><a href="/#impacto" style={{ color: 'inherit', textDecoration: 'none' }}>Impacto Verificado</a></li>
+              <li><a href="/#dashboard" style={{ color: 'inherit', textDecoration: 'none' }}>Dashboard de Gestão</a></li>
+              <li><a href="/formulario" style={{ color: 'inherit', textDecoration: 'none' }}>Triagem por Swipe</a></li>
             </ul>
           </div>
 
@@ -57,11 +60,16 @@ export default function Footer() {
           <div>
             © 2026 Agente na Sua. Todos os direitos reservados.
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#57B33E', fontWeight: 700, fontSize: '0.8rem' }}>
+          <a
+            href={CORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#57B33E', fontWeight: 700, fontSize: '0.8rem', textDecoration: 'none' }}
+          >
             <img src="/nasua.png" alt="QuaTiRare" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
             powered by <span style={{ fontStyle: 'italic', letterSpacing: '0.02em' }}>QuaTiRare</span>
             <Heart size={13} fill="#57B33E" />
-          </div>
+          </a>
         </div>
 
       </div>

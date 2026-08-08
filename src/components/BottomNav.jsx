@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Compass, MessageSquare, Activity, Award, LayoutDashboard, ArrowUpRight } from 'lucide-react';
 
+const APP_URL = 'https://agentenasua.vercel.app';
+
 export default function BottomNav() {
   const [activeSection, setActiveSection] = useState('hero');
 
@@ -72,7 +74,7 @@ export default function BottomNav() {
 
         <div className="bottom-nav-divider" />
 
-        <a href="/#dashboard" className="btn-bottom-cta">
+        <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="btn-bottom-cta">
           <span>App</span>
           <ArrowUpRight size={16} />
         </a>

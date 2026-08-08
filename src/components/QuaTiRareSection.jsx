@@ -1,5 +1,7 @@
 import React from 'react';
-import { ArrowDown, Database } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Database } from 'lucide-react';
+
+const CORE_URL = 'https://quatirare.vercel.app';
 
 const SOURCES = [
   { label: 'ACS / WhatsApp',          icon: '📱', note: 'Canal primário de captura' },
@@ -243,6 +245,36 @@ export default function QuaTiRareSection() {
             }}>
               <strong style={{ fontStyle: 'normal', color: '#4A2F1B' }}>Nota:</strong> A arquitetura é compatível com integração ao e-SUS e bases abertas de ontologia (HPO, ORPHANET). O protótipo atual utiliza dados simulados para demonstração.
             </div>
+
+            {/* Link to the research-facing sibling site */}
+            <a
+              href={CORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                marginTop: '16px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '12px',
+                padding: '16px 20px',
+                borderRadius: '12px',
+                border: '1px solid rgba(11,107,43,0.25)',
+                background: 'linear-gradient(135deg, rgba(11,107,43,0.06) 0%, rgba(11,107,43,0.02) 100%)',
+                textDecoration: 'none',
+                transition: 'transform 0.2s ease',
+              }}
+            >
+              <div>
+                <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: '0.95rem', color: 'var(--color-primary)' }}>
+                  Equipe de pesquisa ou investigação clínica?
+                </div>
+                <div style={{ fontSize: '0.82rem', color: '#6B655F', marginTop: '2px' }}>
+                  Explore o QuaTiRare Research Core — a plataforma de investigação aprofundada de casos.
+                </div>
+              </div>
+              <ArrowUpRight size={20} color="var(--color-primary)" style={{ flexShrink: 0 }} />
+            </a>
           </div>
 
         </div>

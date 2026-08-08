@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Menu, X, LayoutDashboard, MessageSquare, Database, Route, Award, Info, Cpu, ClipboardList } from 'lucide-react';
 
+// Agente na Sua (this site), Agente na Sua — App, and QuaTiRare Research Core
+// are three separately deployed sites sharing the same product. This is the
+// one place that names the app's URL so header/drawer stay in sync.
+const APP_URL = 'https://agentenasua.vercel.app';
+
 const NAV_LINKS = [
   { label: 'Produto',         href: '/#hero',       icon: LayoutDashboard, tabletVisible: true },
   { label: 'Como funciona',   href: '/#whatsapp',   icon: MessageSquare,   tabletVisible: false },
@@ -120,7 +125,7 @@ export default function Header() {
               <a href="/#whatsapp" className="header-btn-ghost">
                 Falar com Nasua
               </a>
-              <a href="/#dashboard" className="header-btn-primary">
+              <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="header-btn-primary">
                 Acessar plataforma
                 <ArrowRight size={14} aria-hidden="true" />
               </a>
@@ -211,7 +216,7 @@ export default function Header() {
 
         {/* CTAs */}
         <div className="drawer-footer">
-          <a href="/#dashboard" className="drawer-cta-primary" onClick={closeMenu}>
+          <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="drawer-cta-primary" onClick={closeMenu}>
             <ArrowRight size={16} aria-hidden="true" />
             Acessar plataforma
           </a>
