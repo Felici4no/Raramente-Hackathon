@@ -1,0 +1,40 @@
+.nav {
+  display: flex;
+  gap: var(--space-2);
+  padding: 0 var(--space-8);
+  background: var(--color-bg-raised);
+  border-bottom: 1px solid var(--color-border);
+  overflow-x: auto;
+}
+
+.link {
+  position: relative;
+  padding: 12px 4px;
+  margin-right: var(--space-5);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 120ms ease;
+}
+
+.link:hover {
+  color: var(--color-ink);
+}
+
+.active {
+  color: var(--color-blue);
+}
+
+.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--color-blue);
+}
