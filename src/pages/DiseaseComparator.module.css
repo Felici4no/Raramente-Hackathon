@@ -1,0 +1,171 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.searchRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 260px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: 9px 12px;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  background: var(--color-bg-raised);
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--color-ink-soft);
+  white-space: nowrap;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.resultBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 12.5px;
+  color: var(--color-ink);
+}
+.resultBtn:hover {
+  background: var(--color-bg-raised);
+}
+.resultBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.hint {
+  font-size: 11px;
+  color: var(--color-ink-faint);
+}
+
+.empty {
+  text-align: center;
+  color: var(--color-ink-faint);
+  font-size: 13px;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 640px;
+}
+
+.table th,
+.table td {
+  border-bottom: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  padding: 10px 14px;
+  font-size: 12px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.table th:last-child,
+.table td:last-child {
+  border-right: none;
+}
+
+.rowLabelHead,
+.rowLabelCell {
+  background: var(--color-bg-raised);
+  font-weight: 600;
+  color: var(--color-ink-soft);
+  white-space: nowrap;
+  position: sticky;
+  left: 0;
+  font-size: 11px;
+}
+
+.th {
+  background: var(--color-bg-raised);
+  min-width: 200px;
+}
+
+.thInner {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+}
+
+.columnName {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 13.5px;
+  padding-right: 20px;
+}
+
+.remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  color: var(--color-ink-faint);
+  cursor: pointer;
+  font-size: 12px;
+}
+.remove:hover {
+  color: var(--color-terracotta);
+}
+
+.chipCell {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.hpoChip {
+  font-size: 10px;
+  background: var(--color-surface-sunken);
+  border-radius: var(--radius-sm);
+  padding: 2px 6px;
+  color: var(--color-ink-soft);
+}
+
+.more {
+  font-size: 10px;
+  color: var(--color-ink-faint);
+}

@@ -1,0 +1,89 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.updated {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-ink-faint);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-size: 12px;
+  padding: 4px 0;
+}
+
+.name {
+  color: var(--color-ink-soft);
+  font-weight: 500;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.online .dot,
+.dot.online {
+  background: var(--color-green);
+}
+.status.online {
+  color: var(--color-green);
+}
+
+.offline .dot,
+.dot.offline {
+  background: var(--color-terracotta);
+}
+.status.offline {
+  color: var(--color-terracotta);
+}
+
+.mock .dot,
+.dot.mock {
+  background: var(--color-amber);
+}
+.status.mock {
+  color: var(--color-amber);
+}
+
+.checking .dot,
+.dot.checking {
+  background: var(--color-ink-faint);
+}
+.status.checking {
+  color: var(--color-ink-faint);
+}

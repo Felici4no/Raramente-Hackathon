@@ -8,3 +8,13 @@
   padding-top: var(--space-6);
   border-top: 1px solid var(--color-border);
 }
+
+.subHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.subHeader > :first-child {
+  flex: 1;
+}

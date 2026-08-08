@@ -1,0 +1,150 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr 300px;
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.filtersCol,
+.reportCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  position: sticky;
+  top: var(--space-4);
+}
+
+.layerToggle {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.layerBtn,
+.layerActive {
+  text-align: left;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  background: var(--color-surface);
+  color: var(--color-ink-soft);
+}
+
+.layerActive {
+  background: var(--color-ink);
+  color: var(--color-bg-raised);
+  border-color: var(--color-ink);
+}
+
+.layerNote {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10.5px;
+  color: var(--color-ink-faint);
+  line-height: 1.5;
+}
+
+.diseaseSelect,
+.ufJump,
+.nationalStats {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.select {
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  padding: 6px 8px;
+  font-size: 12px;
+  background: var(--color-bg-raised);
+}
+
+.natStat {
+  font-size: 12px;
+  color: var(--color-ink-soft);
+}
+
+.mapCol {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-6) 0;
+  overflow-x: auto;
+}
+
+.emptyReport {
+  font-size: 12.5px;
+  color: var(--color-ink-faint);
+  line-height: 1.6;
+}
+
+.ufName {
+  font-size: 20px;
+}
+
+.reportStats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.reportStat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.reportValue {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.reportLabel {
+  font-size: 9.5px;
+  color: var(--color-ink-faint);
+}
+
+.centersBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.centersList {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 11.5px;
+  color: var(--color-ink-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.emptyCenters {
+  font-size: 11px;
+  color: var(--color-ink-faint);
+}
+
+@media (max-width: 1150px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .filtersCol,
+  .reportCol {
+    position: static;
+  }
+}
