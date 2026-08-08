@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoadingScreen from './components/LoadingScreen.jsx';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
@@ -10,6 +11,26 @@ import DashboardDemo from './components/DashboardDemo.jsx';
 import ImpactDemo from './components/ImpactDemo.jsx';
 import BottomNav from './components/BottomNav.jsx';
 import Footer from './components/Footer.jsx';
+import FormularioPage from './pages/FormularioPage.jsx';
+
+function HomePage() {
+  return (
+    <>
+      {/*
+        Section order (per briefing):
+        Hero → O Problema → Território (WhatsApp/Nasua) → QuaTiRare →
+        Jornada Atípica → Dashboard → Impacto Verificado → Footer
+      */}
+      <Hero />
+      <TeseCentral />
+      <WhatsAppDemo />
+      <QuaTiRareSection />
+      <JourneyDemo />
+      <DashboardDemo />
+      <ImpactDemo />
+    </>
+  );
+}
 
 export default function App() {
   const [isLoading, setIsLoading]     = useState(true);
@@ -25,38 +46,32 @@ export default function App() {
   }, []);
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      backgroundColor: 'var(--color-bg-warm)',
-    }}>
-      {isLoading && <LoadingScreen isFadingOut={isFadingOut} />}
+    <BrowserRouter>
+      <div style={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: 'var(--color-bg-warm)',
+      }}>
+        {isLoading && <LoadingScreen isFadingOut={isFadingOut} />}
 
-      <Header />
+        <Header />
 
-      {/*
-        Section order (per briefing):
-        Hero → O Problema → Território (WhatsApp/Nasua) → QuaTiRare →
-        Jornada Atípica → Dashboard → Impacto Verificado → Footer
-      */}
-      <main
-        style={{ flex: 1 }}
-        className="page-offset"
-      >
-        <Hero />
-        <TeseCentral />
-        <WhatsAppDemo />
-        <QuaTiRareSection />
-        <JourneyDemo />
-        <DashboardDemo />
-        <ImpactDemo />
-      </main>
+        <main
+          style={{ flex: 1 }}
+          className="page-offset"
+        >
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/formulario" element={<FormularioPage />} />
+          </Routes>
+        </main>
 
-      <Footer />
+        <Footer />
 
-      {/* BottomNav: visible on tablet/mobile only (hidden via CSS at ≥1024px) */}
-      <BottomNav />
-    </div>
+        {/* BottomNav: visible on tablet/mobile only (hidden via CSS at ≥1024px) */}
+        <BottomNav />
+      </div>
+    </BrowserRouter>
   );
 }

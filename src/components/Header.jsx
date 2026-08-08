@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Menu, X, LayoutDashboard, MessageSquare, Database, Route, Award, Info, Cpu } from 'lucide-react';
+import { ArrowRight, Menu, X, LayoutDashboard, MessageSquare, Database, Route, Award, Info, Cpu, ClipboardList } from 'lucide-react';
 
 const NAV_LINKS = [
-  { label: 'Produto',         href: '#hero',       icon: LayoutDashboard, tabletVisible: true },
-  { label: 'Como funciona',   href: '#whatsapp',   icon: MessageSquare,   tabletVisible: false },
-  { label: 'QuaTiRare',       href: '#quatirare',  icon: Database,        tabletVisible: true },
-  { label: 'Jornada',         href: '#jornada',    icon: Route,           tabletVisible: false },
-  { label: 'Impacto',         href: '#impacto',    icon: Award,           tabletVisible: false },
-  { label: 'Sobre',           href: '#footer',     icon: Info,            tabletVisible: false },
+  { label: 'Produto',         href: '/#hero',       icon: LayoutDashboard, tabletVisible: true },
+  { label: 'Como funciona',   href: '/#whatsapp',   icon: MessageSquare,   tabletVisible: false },
+  { label: 'QuaTiRare',       href: '/#quatirare',  icon: Database,        tabletVisible: true },
+  { label: 'Jornada',         href: '/#jornada',    icon: Route,           tabletVisible: false },
+  { label: 'Impacto',         href: '/#impacto',    icon: Award,           tabletVisible: false },
+  { label: 'Formulário',      href: '/formulario',  icon: ClipboardList,  tabletVisible: true },
+  { label: 'Sobre',           href: '/#footer',     icon: Info,            tabletVisible: false },
 ];
 
 export default function Header() {
@@ -73,7 +74,7 @@ export default function Header() {
           <div className="header-content">
 
             {/* Logo */}
-            <a href="#" className="logo-group" aria-label="Agente na Sua — início">
+            <a href="/" className="logo-group" aria-label="Agente na Sua — início">
               <img
                 src="/nasua.png"
                 alt=""
@@ -116,10 +117,10 @@ export default function Header() {
 
             {/* Desktop CTAs */}
             <div className="header-ctas" aria-label="Ações principais">
-              <a href="#whatsapp" className="header-btn-ghost">
+              <a href="/#whatsapp" className="header-btn-ghost">
                 Falar com Nasua
               </a>
-              <a href="#dashboard" className="header-btn-primary">
+              <a href="/#dashboard" className="header-btn-primary">
                 Acessar plataforma
                 <ArrowRight size={14} aria-hidden="true" />
               </a>
@@ -160,7 +161,7 @@ export default function Header() {
         {/* Drawer header */}
         <div className="drawer-header">
           <a
-            href="#"
+            href="/"
             className="logo-group"
             onClick={closeMenu}
             aria-label="Agente na Sua — início"
@@ -210,11 +211,11 @@ export default function Header() {
 
         {/* CTAs */}
         <div className="drawer-footer">
-          <a href="#dashboard" className="drawer-cta-primary" onClick={closeMenu}>
+          <a href="/#dashboard" className="drawer-cta-primary" onClick={closeMenu}>
             <ArrowRight size={16} aria-hidden="true" />
             Acessar plataforma
           </a>
-          <a href="#whatsapp" className="drawer-cta-secondary" onClick={closeMenu}>
+          <a href="/#whatsapp" className="drawer-cta-secondary" onClick={closeMenu}>
             <MessageSquare size={15} aria-hidden="true" />
             Falar com Nasua
           </a>

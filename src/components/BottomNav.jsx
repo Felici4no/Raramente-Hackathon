@@ -30,40 +30,40 @@ export default function BottomNav() {
     <div className="bottom-nav-container">
       <nav className="bottom-nav-bar">
         
-        <a 
-          href="#tese" 
+        <a
+          href="/#tese"
           className={`bottom-nav-item ${activeSection === 'tese' ? 'active' : ''}`}
         >
           <Compass size={20} />
           <span>A Tese</span>
         </a>
 
-        <a 
-          href="#whatsapp" 
+        <a
+          href="/#whatsapp"
           className={`bottom-nav-item ${activeSection === 'whatsapp' ? 'active' : ''}`}
         >
           <MessageSquare size={20} />
           <span>Território</span>
         </a>
 
-        <a 
-          href="#jornada" 
+        <a
+          href="/#jornada"
           className={`bottom-nav-item ${activeSection === 'jornada' ? 'active' : ''}`}
         >
           <Activity size={20} />
           <span>Jornada</span>
         </a>
 
-        <a 
-          href="#impacto" 
+        <a
+          href="/#impacto"
           className={`bottom-nav-item ${activeSection === 'impacto' ? 'active' : ''}`}
         >
           <Award size={20} />
           <span>Impacto</span>
         </a>
 
-        <a 
-          href="#dashboard" 
+        <a
+          href="/#dashboard"
           className={`bottom-nav-item ${activeSection === 'dashboard' ? 'active' : ''}`}
         >
           <LayoutDashboard size={20} />
@@ -72,7 +72,7 @@ export default function BottomNav() {
 
         <div className="bottom-nav-divider" />
 
-        <a href="#dashboard" className="btn-bottom-cta">
+        <a href="/#dashboard" className="btn-bottom-cta">
           <span>App</span>
           <ArrowUpRight size={16} />
         </a>
