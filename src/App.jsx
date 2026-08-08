@@ -33,7 +33,7 @@ export default function App() {
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--color-bg-warm)' }}>
       {isLoading && <LoadingScreen isFadingOut={isFadingOut} />}
       <Header />
-      <main style={{ flex: 1, paddingTop: '72px' }}>
+      <main style={{ flex: 1, paddingTop: '72px', paddingBottom: '80px' }}>
         <Hero />
         <TeseCentral />
         <WhatsAppDemo />

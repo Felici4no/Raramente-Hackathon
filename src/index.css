@@ -44,7 +44,6 @@ html, body {
   background-color: var(--color-bg-warm);
   color: var(--color-text-dark);
   line-height: 1.6;
-  padding-bottom: 60px; /* Garante que a barra inferior fixa nao cubra o footer */
 }
 
 img, svg, video {
