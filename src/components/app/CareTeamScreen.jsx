@@ -3,7 +3,7 @@ import { ClipboardCheck, ChevronRight, AlertCircle, ExternalLink } from "lucide-
 
 const REVIEWS = [
   { id: "r1", story: "Historia #9104", protocol: "P04", reason: "Jornada com nos assistenciais", priority: "high" },
-  { id: "r2", story: "Historia #7203", protocol: "P05", reason: "Priorizar revisao â€” indice elevado", priority: "high" },
+  { id: "r2", story: "Historia #7203", protocol: "P05", reason: "Priorizar revisao — indice elevado", priority: "high" },
   { id: "r3", story: "Historia #6112", protocol: "P02", reason: "Pista de peregrinacao a confirmar", priority: "medium" },
 ];
 
@@ -19,7 +19,7 @@ export default function CareTeamScreen() {
           <div key={r.id} style={{ background: "#fff", borderRadius: "16px", border: "1px solid " + (r.priority === "high" ? "#FCA5A5" : "#E2DDD3"), padding: "14px 16px", display: "flex", alignItems: "center", gap: "12px", boxShadow: "0 2px 8px rgba(0,0,0,0.03)" }}>
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ fontFamily: "var(--font-heading)", fontWeight: 800, fontSize: "0.95rem", color: "#4A2F1B" }}>{r.story}</div>
-              <div style={{ fontSize: "0.72rem", color: "#8B5A2B", fontWeight: 600, marginTop: "2px" }}>{r.protocol} Â· {r.reason}</div>
+              <div style={{ fontSize: "0.72rem", color: "#8B5A2B", fontWeight: 600, marginTop: "2px" }}>{r.protocol} · {r.reason}</div>
             </div>
             {r.priority === "high" && <AlertCircle size={16} color="#DC2626" />}
             <ChevronRight size={16} color="#8B5A2B" />

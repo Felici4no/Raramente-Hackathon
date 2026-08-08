@@ -49,9 +49,9 @@ export default function ImpactoAppScreen({ session, onLogout, onViewRede }) {
         <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "16px", paddingBottom: "14px", borderBottom: "1px solid var(--color-border-subtle)" }}>
           <img src="/nasua.png" alt="Nasua" style={{ width: "48px", height: "48px", objectFit: "contain" }} />
           <div>
-            <h3 style={{ fontSize: "1.15rem", color: "#4A2F1B", fontWeight: 800, margin: 0 }}>{session ? session.name : "â€”"} â€” {session ? session.roleLabel : ""}</h3>
+            <h3 style={{ fontSize: "1.15rem", color: "#4A2F1B", fontWeight: 800, margin: 0 }}>{session ? session.name : "—"} — {session ? session.roleLabel : ""}</h3>
             <p style={{ fontSize: "0.78rem", color: "#8B5A2B", fontWeight: 600, margin: 0 }}>
-              {isACS ? "Microarea 04 Â· UBS Jardim Esperanca" : "Colaborador do Territorio"}
+              {isACS ? "Microarea 04 · UBS Jardim Esperanca" : "Colaborador do Territorio"}
             </p>
           </div>
         </div>
@@ -104,10 +104,10 @@ export default function ImpactoAppScreen({ session, onLogout, onViewRede }) {
         <div style={{ fontFamily: "var(--font-heading)", fontWeight: 800, fontSize: "0.95rem", color: "#4A2F1B", marginBottom: "12px" }}>Minha Conta</div>
         <div style={{ display: "flex", alignItems: "center", gap: "12px", padding: "10px 0", borderBottom: "1px solid #F0EDE8", marginBottom: "12px" }}>
           <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "rgba(11,107,43,0.1)", border: "2px solid rgba(11,107,43,0.25)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.2rem" }}>
-            {session && session.role === "ACS" ? "ðŸ©º" : session && session.role === "CARE_TEAM" ? "ðŸ¥" : session && session.role === "MANAGER" ? "ðŸ“Š" : "ðŸ‘¤"}
+            {session && session.role === "ACS" ? "🩺" : session && session.role === "CARE_TEAM" ? "🏥" : session && session.role === "MANAGER" ? "📊" : "👤"}
           </div>
           <div>
-            <div style={{ fontWeight: 800, fontSize: "0.95rem", color: "#4A2F1B" }}>{session ? session.name : "â€”"}</div>
+            <div style={{ fontWeight: 800, fontSize: "0.95rem", color: "#4A2F1B" }}>{session ? session.name : "—"}</div>
             <div style={{ fontSize: "0.7rem", color: "#8B5A2B", fontWeight: 600 }}>{session ? session.roleLabel : ""}</div>
           </div>
         </div>

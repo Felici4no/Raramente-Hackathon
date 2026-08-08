@@ -1,4 +1,4 @@
-﻿// â”€â”€â”€ Mock Users â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+﻿// ─── Mock Users ──────────────────────────────────────────────────────────────
 export const MOCK_USERS = {
   "user-collab-01": {
     userId: "user-collab-01",
@@ -30,7 +30,7 @@ export const MOCK_USERS = {
   },
 };
 
-// â”€â”€â”€ Permission Policies â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Permission Policies ──────────────────────────────────────────────────────
 export const PERMISSIONS = {
   COLLABORATOR: {
     viewTerritory: false,
@@ -72,7 +72,7 @@ export const PERMISSIONS = {
   },
 };
 
-// â”€â”€â”€ Role-based Tab Configs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Role-based Tab Configs ───────────────────────────────────────────────────
 export const TAB_CONFIG = {
   COLLABORATOR: [
     { id: "inicio",   label: "Inicio",    icon: "Home" },
@@ -109,7 +109,7 @@ export function getDefaultTab(role) {
   return tabs ? tabs[0].id : "radar";
 }
 
-// â”€â”€â”€ Session â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Session ──────────────────────────────────────────────────────────────────
 const SESSION_KEY = "agente_session";
 
 export function login(userId) {
@@ -120,7 +120,7 @@ export function login(userId) {
 }
 
 export function logout() {
-  // NEVER localStorage.clear() â€” only remove session
+  // NEVER localStorage.clear() — only remove session
   localStorage.removeItem(SESSION_KEY);
 }
 

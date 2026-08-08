@@ -30,7 +30,7 @@ export default function InicioScreen({ session, onOpenJornada, onOpenRede, onAdd
         </p>
       </div>
 
-      {/* Own journey â€” highlight card */}
+      {/* Own journey — highlight card */}
       {self && (
         <div>
           <div style={{ fontSize: "0.68rem", fontWeight: 800, color: "#8B5A2B", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "8px" }}>
@@ -41,7 +41,7 @@ export default function InicioScreen({ session, onOpenJornada, onOpenRede, onAdd
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px" }}>
                 <div>
                   <div style={{ fontFamily: "var(--font-heading)", fontWeight: 900, fontSize: "1.1rem", color: "#4A2F1B" }}>{self.name}</div>
-                  <div style={{ fontSize: "0.68rem", color: "#0B6B2B", fontWeight: 700 }}>{self.protocols} protocolos Â· {self.pendingInfo} pendente{self.pendingInfo !== 1 ? "s" : ""}</div>
+                  <div style={{ fontSize: "0.68rem", color: "#0B6B2B", fontWeight: 700 }}>{self.protocols} protocolos · {self.pendingInfo} pendente{self.pendingInfo !== 1 ? "s" : ""}</div>
                 </div>
                 <div style={{ textAlign: "right" }}>
                   <div style={{ fontFamily: "var(--font-heading)", fontWeight: 900, fontSize: "1.6rem", color: "#0B6B2B" }}>{self.journeyPct}%</div>
@@ -73,7 +73,7 @@ export default function InicioScreen({ session, onOpenJornada, onOpenRede, onAdd
               Minha Rede
             </div>
             <button onClick={onOpenRede} style={{ background: "none", border: "none", fontSize: "0.72rem", color: "#0B6B2B", fontWeight: 700, cursor: "pointer" }}>
-              Ver tudo â€º
+              Ver tudo ›
             </button>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
@@ -88,8 +88,8 @@ export default function InicioScreen({ session, onOpenJornada, onOpenRede, onAdd
                     </div>
                     <div style={{ fontSize: "0.72rem", color: "#8B5A2B", marginTop: "2px" }}>
                       {p.journeyPct}% reconstruida
-                      {p.pendingInfo > 0 && <span style={{ color: "#D97706", fontWeight: 700 }}> Â· {p.pendingInfo} ponto{p.pendingInfo !== 1 ? "s" : ""} a conectar</span>}
-                      {p.connections > 0 && <span style={{ color: "#0B6B2B", fontWeight: 700 }}> Â· {p.connections} nova conexao</span>}
+                      {p.pendingInfo > 0 && <span style={{ color: "#D97706", fontWeight: 700 }}> · {p.pendingInfo} ponto{p.pendingInfo !== 1 ? "s" : ""} a conectar</span>}
+                      {p.connections > 0 && <span style={{ color: "#0B6B2B", fontWeight: 700 }}> · {p.connections} nova conexao</span>}
                     </div>
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "3px" }}>

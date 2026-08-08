@@ -112,7 +112,7 @@ function TrailSinuous({ trail, onSelectStep }) {
                 ) : step.status === "attention" ? (
                   <AlertCircle size={22} color={s.text} />
                 ) : locked ? (
-                  <span style={{ fontSize: "20px", opacity: 0.5 }}>ðŸ”’</span>
+                  <span style={{ fontSize: "20px", opacity: 0.5 }}>🔒</span>
                 ) : (
                   <span style={{ fontFamily: "var(--font-heading)", fontWeight: 900, fontSize: "0.88rem", color: s.text }}>{p.code}</span>
                 )}
@@ -154,7 +154,7 @@ function BottomSheet({ jornada, step, onClose, onRegisterPista }) {
             <span style={{ fontWeight: 700, fontSize: "0.82rem", color: p.color }}>{p.name}</span>
           </div>
           <div style={{ fontSize: "0.7rem", fontWeight: 700, color: "#8B5A2B", marginBottom: "6px" }}>
-            {jornada.label} Â· Microarea {jornada.microarea} Â· via {jornada.origem}
+            {jornada.label} · Microarea {jornada.microarea} · via {jornada.origem}
           </div>
           <p style={{ fontSize: "0.86rem", color: "#4A2F1B", lineHeight: 1.55, marginBottom: "14px", fontWeight: 500 }}>{p.desc}</p>
           <div style={{ background: "#F4F1E8", borderRadius: "14px", padding: "12px 14px", marginBottom: "20px", borderLeft: "3px solid " + p.color }}>

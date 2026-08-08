@@ -70,7 +70,7 @@ export default function App() {
     setActiveTab("jornadas");
   }
 
-  // If no session â€” show login gate
+  // If no session — show login gate
   if (!session) {
     return (
       <div className="app-viewport-wrapper">
@@ -91,12 +91,12 @@ export default function App() {
 
         <main className="app-main-content">
 
-          {/* â”€â”€ Flow Override: Swipe Cards â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+          {/* ── Flow Override: Swipe Cards ─────────────────────────────── */}
           {flowState === "swiping" && (
             <PistasSwipeScreen onCancel={handleResetFlow} onComplete={handlePistasComplete} />
           )}
 
-          {/* â”€â”€ Flow Override: Assinatura da Jornada â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+          {/* ── Flow Override: Assinatura da Jornada ──────────────────── */}
           {flowState === "result" && (
             <AssinaturaJornadaScreen
               pData={currentPistaData}
@@ -105,10 +105,10 @@ export default function App() {
             />
           )}
 
-          {/* â”€â”€ Regular Tab Routing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+          {/* ── Regular Tab Routing ──────────────────────────────────── */}
           {flowState === "idle" && (
             <>
-              {/* â”€ COLLABORATOR tabs â”€ */}
+              {/* ─ COLLABORATOR tabs ─ */}
               {role === "COLLABORATOR" && activeTab === "inicio" && (
                 <InicioScreen
                   session={session}
@@ -135,7 +135,7 @@ export default function App() {
                 />
               )}
 
-              {/* â”€ ACS tabs â”€ */}
+              {/* ─ ACS tabs ─ */}
               {role === "ACS" && activeTab === "radar" && (
                 <RadarScreen onStartPista={handleStartPista} onOpenNasua={() => setActiveTab("nasua")} />
               )}
@@ -144,17 +144,17 @@ export default function App() {
                 <MissoesScreen />
               )}
 
-              {/* â”€ CARE_TEAM tabs â”€ */}
+              {/* ─ CARE_TEAM tabs ─ */}
               {role === "CARE_TEAM" && activeTab === "revisoes" && (
                 <CareTeamScreen />
               )}
 
-              {/* â”€ MANAGER tabs â”€ */}
+              {/* ─ MANAGER tabs ─ */}
               {role === "MANAGER" && activeTab === "visao" && (
                 <ManagerScreen />
               )}
 
-              {/* â”€ Shared tabs â”€ */}
+              {/* ─ Shared tabs ─ */}
               {activeTab === "jornadas" && !selectedJornada && (
                 <ListaJornadasScreen onSelectJornada={setSelectedJornada} />
               )}

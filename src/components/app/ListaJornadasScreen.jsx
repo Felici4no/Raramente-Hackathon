@@ -114,7 +114,7 @@ export default function ListaJornadasScreen({ onSelectJornada }) {
 
                 <div style={{ background: "#F4F1E8", borderRadius: "10px", padding: "8px 10px", marginBottom: "10px" }}>
                   <div style={{ fontSize: "0.62rem", fontWeight: 800, color: "#8B5A2B", textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: "1px" }}>Protocolo atual</div>
-                  <div style={{ fontWeight: 800, fontSize: "0.82rem", color: "#4A2F1B" }}>{j.protocoloAtual} â€” {j.protocoloNome}</div>
+                  <div style={{ fontWeight: 800, fontSize: "0.82rem", color: "#4A2F1B" }}>{j.protocoloAtual} — {j.protocoloNome}</div>
                 </div>
 
                 {hasNotifs && (

@@ -5,11 +5,11 @@ function journeyKey(userId) {
   return "agente_journeys_" + userId;
 }
 
-// verificationStatus â€” belongs to a piece of information, not to a person
+// verificationStatus — belongs to a piece of information, not to a person
 export const VERIFICATION_STATUS = {
-  REPORTED:             { label: "Relato",    symbol: "â—‹", color: "#D97706", bg: "#FEF3C7",               border: "#F59E0B" },
-  PENDING_VERIFICATION: { label: "Pendente",  symbol: "â—Œ", color: "#8B5A2B", bg: "#F4F1E8",               border: "#D4A373" },
-  VERIFIED:             { label: "Verificado",symbol: "âœ“", color: "#0B6B2B", bg: "rgba(11,107,43,0.08)", border: "rgba(11,107,43,0.25)" },
+  REPORTED:             { label: "Relato",    symbol: "○", color: "#D97706", bg: "#FEF3C7",               border: "#F59E0B" },
+  PENDING_VERIFICATION: { label: "Pendente",  symbol: "◌", color: "#8B5A2B", bg: "#F4F1E8",               border: "#D4A373" },
+  VERIFIED:             { label: "Verificado",symbol: "✓", color: "#0B6B2B", bg: "rgba(11,107,43,0.08)", border: "rgba(11,107,43,0.25)" },
 };
 
 // Default event structure

@@ -75,34 +75,34 @@ export function addFamiliar(userId, familiar) {
   return newPerson;
 }
 
-// â”€â”€â”€ Relationship labels â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Relationship labels ──────────────────────────────────────────────────────
 export const RELATIONSHIP_OPTIONS = [
-  { id: "SELF",        label: "EU",        icon: "ðŸ‘¤" },
-  { id: "MOTHER",      label: "Mae",       icon: "ðŸ‘©" },
-  { id: "FATHER",      label: "Pai",       icon: "ðŸ‘¨" },
-  { id: "SON",         label: "Filho",     icon: "ðŸ‘¦" },
-  { id: "DAUGHTER",    label: "Filha",     icon: "ðŸ‘§" },
-  { id: "BROTHER",     label: "Irmao",     icon: "ðŸ§‘" },
-  { id: "SISTER",      label: "Irma",      icon: "ðŸ‘±" },
-  { id: "GRANDFATHER", label: "Avo",       icon: "ðŸ‘´" },
-  { id: "GRANDMOTHER", label: "Avo",       icon: "ðŸ‘µ" },
-  { id: "GRANDSON",    label: "Neto",      icon: "ðŸ§’" },
-  { id: "UNCLE",       label: "Tio",       icon: "ðŸ§”" },
-  { id: "AUNT",        label: "Tia",       icon: "ðŸ‘©" },
-  { id: "COUSIN_M",    label: "Primo",     icon: "ðŸ§‘" },
-  { id: "OTHER",       label: "Outro",     icon: "ðŸ¤" },
+  { id: "SELF",        label: "EU",        icon: "👤" },
+  { id: "MOTHER",      label: "Mae",       icon: "👩" },
+  { id: "FATHER",      label: "Pai",       icon: "👨" },
+  { id: "SON",         label: "Filho",     icon: "👦" },
+  { id: "DAUGHTER",    label: "Filha",     icon: "👧" },
+  { id: "BROTHER",     label: "Irmao",     icon: "🧑" },
+  { id: "SISTER",      label: "Irma",      icon: "👱" },
+  { id: "GRANDFATHER", label: "Avo",       icon: "👴" },
+  { id: "GRANDMOTHER", label: "Avo",       icon: "👵" },
+  { id: "GRANDSON",    label: "Neto",      icon: "🧒" },
+  { id: "UNCLE",       label: "Tio",       icon: "🧔" },
+  { id: "AUNT",        label: "Tia",       icon: "👩" },
+  { id: "COUSIN_M",    label: "Primo",     icon: "🧑" },
+  { id: "OTHER",       label: "Outro",     icon: "🤝" },
 ];
 
 export const RELATIONSHIP_LABELS = Object.fromEntries(
   RELATIONSHIP_OPTIONS.map((r) => [r.id, r.label])
 );
 
-// â”€â”€â”€ Consent status â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Consent status ───────────────────────────────────────────────────────────
 // consentStatus lives on Person (did they authorize Lucas to manage their journey?)
 // NOT on the journey event (that uses verificationStatus)
 export const CONSENT_STATUS = {
-  SELF:       { label: "Voce",      symbol: "âœ“", color: "#0B6B2B", bg: "rgba(11,107,43,0.08)", border: "rgba(11,107,43,0.25)" },
-  AUTHORIZED: { label: "Autorizado",symbol: "âœ“", color: "#0B6B2B", bg: "rgba(11,107,43,0.08)", border: "rgba(11,107,43,0.25)" },
-  PENDING:    { label: "Aguardando",symbol: "â—Œ", color: "#D97706", bg: "#FEF3C7",               border: "#F59E0B" },
-  REVOKED:    { label: "Revogado",  symbol: "âœ•", color: "#DC2626", bg: "#FEF2F2",               border: "#FCA5A5" },
+  SELF:       { label: "Voce",      symbol: "✓", color: "#0B6B2B", bg: "rgba(11,107,43,0.08)", border: "rgba(11,107,43,0.25)" },
+  AUTHORIZED: { label: "Autorizado",symbol: "✓", color: "#0B6B2B", bg: "rgba(11,107,43,0.08)", border: "rgba(11,107,43,0.25)" },
+  PENDING:    { label: "Aguardando",symbol: "◌", color: "#D97706", bg: "#FEF3C7",               border: "#F59E0B" },
+  REVOKED:    { label: "Revogado",  symbol: "✕", color: "#DC2626", bg: "#FEF2F2",               border: "#FCA5A5" },
 };

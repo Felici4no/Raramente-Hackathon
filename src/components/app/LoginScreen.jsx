@@ -8,7 +8,7 @@ const ROLE_CONFIG = {
     color: "#0B6B2B",
     bg: "rgba(11,107,43,0.08)",
     border: "rgba(11,107,43,0.25)",
-    icon: "ðŸ‘¤",
+    icon: "👤",
   },
   ACS: {
     label: "Agente Comunitaria de Saude",
@@ -16,7 +16,7 @@ const ROLE_CONFIG = {
     color: "#D97706",
     bg: "#FEF3C7",
     border: "#F59E0B",
-    icon: "ðŸ©º",
+    icon: "🩺",
   },
   CARE_TEAM: {
     label: "Equipe de Saude",
@@ -24,7 +24,7 @@ const ROLE_CONFIG = {
     color: "#0891B2",
     bg: "#E0F2FE",
     border: "#7DD3FC",
-    icon: "ðŸ¥",
+    icon: "🏥",
   },
   MANAGER: {
     label: "Gestora",
@@ -32,7 +32,7 @@ const ROLE_CONFIG = {
     color: "#7C3AED",
     bg: "#F5F3FF",
     border: "#C4B5FD",
-    icon: "ðŸ“Š",
+    icon: "📊",
   },
 };
 
@@ -93,7 +93,7 @@ export default function LoginScreen({ onLogin }) {
               {isLoading ? (
                 <div style={{ width: "20px", height: "20px", border: "2px solid " + cfg.color, borderTopColor: "transparent", borderRadius: "50%", animation: "spin 0.7s linear infinite", flexShrink: 0 }} />
               ) : (
-                <div style={{ fontSize: "1.1rem", opacity: 0.35, flexShrink: 0 }}>â€º</div>
+                <div style={{ fontSize: "1.1rem", opacity: 0.35, flexShrink: 0 }}>›</div>
               )}
             </button>
           );
@@ -102,7 +102,7 @@ export default function LoginScreen({ onLogin }) {
 
       {/* Demo disclaimer */}
       <div style={{ marginTop: "28px", fontSize: "0.68rem", color: "#B0A898", fontWeight: 600, textAlign: "center", maxWidth: "280px", lineHeight: 1.5 }}>
-        ProtÃ³tipo de demonstracao. Nenhum dado real Ã© processado.
+        Protótipo de demonstracao. Nenhum dado real é processado.
       </div>
 
       <a
