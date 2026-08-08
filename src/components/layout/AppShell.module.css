@@ -81,6 +81,15 @@
   border-bottom-color: var(--color-terracotta);
 }
 
+.externalLink {
+  margin-left: auto;
+  color: var(--color-amber);
+}
+.externalLink:hover {
+  color: var(--color-amber);
+  opacity: 0.8;
+}
+
 .main {
   flex: 1;
 }

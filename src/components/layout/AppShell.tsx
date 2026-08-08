@@ -32,6 +32,9 @@ export function AppShell({ children }: { children: ReactNode }) {
             {l.label}
           </NavLink>
         ))}
+        <a href="https://quatisus.vercel.app" target="_blank" rel="noopener noreferrer" className={`${styles.topNavLink} ${styles.externalLink}`}>
+          Agente na Sua ↗
+        </a>
       </nav>
       <main className={styles.main}>{children}</main>
       <SourceRegistryDrawer />
