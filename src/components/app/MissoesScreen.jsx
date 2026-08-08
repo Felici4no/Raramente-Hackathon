@@ -1,22 +1,33 @@
-import React, { useState } from 'react';
-import { Target, CheckCircle2, RefreshCw, Sparkles, AlertCircle } from 'lucide-react';
+﻿import React, { useState } from "react";
+import { Target, CheckCircle2, RefreshCw, Sparkles, AlertCircle } from "lucide-react";
 
 const MISSIONS = [
   {
-    id: 'm1',
-    title: 'Nó Encontrado: Encaminhamento Perbido',
-    desc: 'Uma consulta para Neurologia foi indicada há 8 meses, mas aparentemente nunca aconteceu na rede.',
-    target: 'Família do Pedro (Microárea 04)',
-    actionText: 'Confirmar se a consulta foi agendada ou perdida',
-    resolvedMsg: 'Você ajudou a reconectar essa história! O encaminhamento foi reagendado.',
+    id: "m1",
+    badge: "No pendente",
+    title: "Encaminhamento perdido",
+    desc: "Consulta para Neurologia indicada ha 8 meses. Sem registro de realizacao na rede.",
+    target: "Pedro Â· Microarea 04",
+    actionText: "Verificar consulta",
+    resolvedMsg: "Encaminhamento reagendado com sucesso.",
   },
   {
-    id: 'm2',
-    title: 'Nó Encontrado: Retorno sem Resposta',
-    desc: 'Retorno para UBS agendado após exame de imagem que não foi anexado ao prontuário.',
-    target: 'Família da Bete (Microárea 01)',
-    actionText: 'Verificar com o morador se o exame foi realizado',
-    resolvedMsg: 'Você ajudou a desatar um nó! O resultado do exame foi localizado.',
+    id: "m2",
+    badge: "No pendente",
+    title: "Retorno sem resposta",
+    desc: "Retorno para UBS agendado apos exame de imagem que nao foi anexado ao prontuario.",
+    target: "Bete Â· Microarea 01",
+    actionText: "Verificar exame",
+    resolvedMsg: "Resultado do exame localizado.",
+  },
+  {
+    id: "m3",
+    badge: "No pendente",
+    title: "Encaminhamento em aberto",
+    desc: "Encaminhamento para fisioterapia gerado na UBS ha 3 meses sem confirmacao.",
+    target: "Pedro Â· Microarea 04",
+    actionText: "Confirmar encaminhamento",
+    resolvedMsg: "Encaminhamento confirmado e reagendado.",
   },
 ];
 
@@ -33,28 +44,28 @@ export default function MissoesScreen() {
   };
 
   return (
-    <div style={{ padding: '20px 16px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-      
+    <div style={{ padding: "20px 14px", display: "flex", flexDirection: "column", gap: "18px" }}>
+
       {/* Header */}
       <div>
-        <div style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--color-quati-brown)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-          Desatar Nós do Território
+        <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#8B5A2B", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "2px" }}>
+          Desatar nos do territorio
         </div>
-        <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#4A2F1B', margin: '2px 0 0' }}>
-          Missões de Cuidado
+        <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "1.35rem", fontWeight: 900, color: "#4A2F1B", margin: 0, lineHeight: 1.15 }}>
+          Missoes de Cuidado
         </h2>
       </div>
 
-      {/* Intro Box */}
-      <div style={{ background: 'linear-gradient(135deg, rgba(11,107,43,0.08) 0%, rgba(11,107,43,0.03) 100%)', borderRadius: '16px', padding: '16px', border: '1px solid rgba(11,107,43,0.2)', display: 'flex', alignItems: 'center', gap: '12px' }}>
-        <img src="/nasua.png" alt="Nasua" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
-        <div style={{ fontSize: '0.84rem', color: 'var(--color-primary)', fontWeight: 600, lineHeight: 1.45 }}>
-          "Quando um encaminhamento é resgatado, a linha do cuidado volta a fluir!"
+      {/* Nasua intro */}
+      <div style={{ background: "linear-gradient(135deg, rgba(11,107,43,0.08) 0%, rgba(11,107,43,0.03) 100%)", borderRadius: "16px", padding: "14px", border: "1px solid rgba(11,107,43,0.2)", display: "flex", alignItems: "center", gap: "12px" }}>
+        <img src="/nasua.png" alt="Nasua" style={{ width: "40px", height: "40px", objectFit: "contain", flexShrink: 0 }} />
+        <div style={{ fontSize: "0.83rem", color: "#0B6B2B", fontWeight: 600, lineHeight: 1.45 }}>
+          "Quando um encaminhamento e resgatado, a linha do cuidado volta a fluir!"
         </div>
       </div>
 
-      {/* Missions List */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      {/* Missions */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
         {MISSIONS.map((m) => {
           const isResolved = resolvedIds.includes(m.id);
           const isAnimating = animatingId === m.id;
@@ -62,61 +73,74 @@ export default function MissoesScreen() {
           return (
             <div
               key={m.id}
-              className={`card ${isAnimating ? 'animate-unknot' : ''}`}
               style={{
-                background: '#FFFFFF',
-                borderRadius: '20px',
-                padding: '20px',
-                border: isResolved ? '2px solid var(--color-success)' : '1px solid var(--color-amber-border)',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.04)',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-                <span className={`badge ${isResolved ? 'badge-primary' : 'badge-amber'}`} style={{ fontSize: '0.72rem' }}>
-                  {isResolved ? <CheckCircle2 size={12} /> : <AlertCircle size={12} />}
-                  {isResolved ? 'Nó Desatado' : 'Nó Pendente'}
-                </span>
-                <span style={{ fontSize: '0.78rem', color: '#8B5A2B', fontWeight: 700 }}>{m.target}</span>
+                background: "#fff",
+                borderRadius: "20px",
+                border: isResolved ? "2px solid #57B33E" : "1px solid #F59E0B",
+                boxShadow: "0 4px 16px rgba(0,0,0,0.04)",
+                overflow: "hidden",
+              }}>
+              <div style={{ padding: "16px 16px 14px" }}>
+                {/* Top row: badge + target */}
+                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "8px", marginBottom: "10px" }}>
+                  <span style={{
+                    display: "inline-flex", alignItems: "center", gap: "4px",
+                    background: isResolved ? "rgba(11,107,43,0.1)" : "#FEF3C7",
+                    color: isResolved ? "#0B6B2B" : "#D97706",
+                    border: "1px solid " + (isResolved ? "rgba(11,107,43,0.25)" : "#F59E0B"),
+                    borderRadius: "99px", fontSize: "0.68rem", fontWeight: 800,
+                    padding: "3px 9px", flexShrink: 0,
+                  }}>
+                    {isResolved ? <CheckCircle2 size={11} /> : <AlertCircle size={11} />}
+                    {isResolved ? "No Desatado" : m.badge}
+                  </span>
+                  <span style={{ fontSize: "0.72rem", color: "#8B5A2B", fontWeight: 700, textAlign: "right", lineHeight: 1.3, minWidth: 0, wordBreak: "break-word" }}>
+                    {m.target}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h3 style={{ fontFamily: "var(--font-heading)", fontSize: "1rem", fontWeight: 800, color: "#4A2F1B", marginBottom: "6px", lineHeight: 1.25 }}>
+                  {m.title}
+                </h3>
+
+                {/* Description */}
+                <p style={{ fontSize: "0.84rem", color: "#524B45", lineHeight: 1.55, marginBottom: "14px", margin: "0 0 14px 0", display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+                  {m.desc}
+                </p>
               </div>
 
-              <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#4A2F1B', marginBottom: '8px' }}>
-                {m.title}
-              </h3>
-
-              <p style={{ fontSize: '0.86rem', color: '#524B45', lineHeight: 1.5, marginBottom: '14px' }}>
-                {m.desc}
-              </p>
-
+              {/* CTA */}
               {!isResolved ? (
                 <button
                   onClick={() => handleResolve(m.id)}
                   disabled={isAnimating}
-                  className="btn btn-primary"
-                  style={{ width: '100%', padding: '12px', fontSize: '0.88rem', borderRadius: '12px' }}
-                >
+                  style={{
+                    width: "100%", border: "none",
+                    background: isAnimating ? "#6B655F" : "#0B6B2B",
+                    color: "#fff", cursor: "pointer",
+                    display: "flex", alignItems: "center", justifyContent: "center", gap: "8px",
+                    fontWeight: 800, fontSize: "0.9rem",
+                    minHeight: "52px", padding: "12px 16px",
+                    lineHeight: 1.3, textAlign: "center",
+                    transition: "background 0.2s",
+                  }}>
                   {isAnimating ? (
-                    <>
-                      <RefreshCw size={16} className="animate-spin" />
-                      <span>Desatando nó...</span>
-                    </>
+                    <><RefreshCw size={16} className="animate-spin" /><span>Desatando no...</span></>
                   ) : (
-                    <>
-                      <Target size={16} />
-                      <span>{m.actionText}</span>
-                    </>
+                    <><Target size={16} /><span>{m.actionText}</span></>
                   )}
                 </button>
               ) : (
-                <div style={{ background: 'rgba(11,107,43,0.08)', padding: '12px', borderRadius: '12px', fontSize: '0.84rem', color: 'var(--color-primary)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Sparkles size={16} />
-                  <span>{m.resolvedMsg}</span>
+                <div style={{ background: "rgba(11,107,43,0.08)", padding: "14px 16px", display: "flex", alignItems: "center", gap: "8px" }}>
+                  <Sparkles size={16} color="#0B6B2B" style={{ flexShrink: 0 }} />
+                  <span style={{ fontSize: "0.84rem", color: "#0B6B2B", fontWeight: 700, lineHeight: 1.35 }}>{m.resolvedMsg}</span>
                 </div>
               )}
             </div>
           );
         })}
       </div>
-
     </div>
   );
 }

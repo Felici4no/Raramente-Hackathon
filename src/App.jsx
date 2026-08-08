@@ -5,7 +5,8 @@ import AppBottomNav from './components/app/AppBottomNav.jsx';
 import RadarScreen from './components/app/RadarScreen.jsx';
 import PistasSwipeScreen from './components/app/PistasSwipeScreen.jsx';
 import AssinaturaJornadaScreen from './components/app/AssinaturaJornadaScreen.jsx';
-import TerritorioScreen from './components/app/TerritorioScreen.jsx';
+import JornadasScreen from './components/app/JornadasScreen.jsx';
+import ListaJornadasScreen from './components/app/ListaJornadasScreen.jsx';
 import MissoesScreen from './components/app/MissoesScreen.jsx';
 import NasuaMicrogamesScreen from './components/app/NasuaMicrogamesScreen.jsx';
 import ImpactoAppScreen from './components/app/ImpactoAppScreen.jsx';
@@ -18,6 +19,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('radar'); // 'radar' | 'jornadas' | 'nasua' | 'missoes' | 'impacto'
   const [flowState, setFlowState] = useState('idle');  // 'idle' | 'swiping' | 'result'
   const [currentPistaData, setCurrentPistaData] = useState(null);
+  const [selectedJornada, setSelectedJornada] = useState(null); // for 2-level jornadas nav
 
   useEffect(() => {
     const fadeTimer = setTimeout(() => setIsFadingOut(true), 1200);
@@ -47,6 +49,7 @@ export default function App() {
   const handleViewTerritorio = () => {
     setFlowState('idle');
     setCurrentPistaData(null);
+    setSelectedJornada(null);
     setActiveTab('jornadas');
   };
 
@@ -89,8 +92,16 @@ export default function App() {
                 />
               )}
 
-              {activeTab === 'jornadas' && (
-                <TerritorioScreen />
+              {activeTab === 'jornadas' && !selectedJornada && (
+                <ListaJornadasScreen onSelectJornada={setSelectedJornada} />
+              )}
+
+              {activeTab === 'jornadas' && selectedJornada && (
+                <JornadasScreen
+                  jornada={selectedJornada}
+                  onBack={() => setSelectedJornada(null)}
+                  onStartPista={handleStartPista}
+                />
               )}
 
               {activeTab === 'nasua' && (
@@ -112,6 +123,7 @@ export default function App() {
         {/* Bottom Navigation Bar */}
         <AppBottomNav activeTab={activeTab} setActiveTab={(tab) => {
           setFlowState('idle');
+          setSelectedJornada(null);
           setActiveTab(tab);
         }} />
 
