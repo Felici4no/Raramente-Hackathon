@@ -105,6 +105,15 @@ export default function LoginScreen({ onLogin }) {
         ProtÃ³tipo de demonstracao. Nenhum dado real Ã© processado.
       </div>
 
+      <a
+        href="https://quatisus.vercel.app"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ marginTop: "12px", fontSize: "0.72rem", color: "#8B5A2B", fontWeight: 700, textDecoration: "none", borderBottom: "1px solid rgba(139,90,43,0.3)" }}
+      >
+        Conhecer o site institucional
+      </a>
+
       <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
     </div>
   );
