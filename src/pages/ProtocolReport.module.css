@@ -1,0 +1,137 @@
+.page {
+  max-width: 900px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: var(--space-6);
+}
+
+.waLink {
+  text-decoration: none;
+}
+
+.sheet {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-8);
+}
+
+.sheetHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.sheetTitle {
+  font-size: 24px;
+  margin-top: 4px;
+}
+
+.badgeRow {
+  display: flex;
+  gap: 8px;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.block {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.paragraph {
+  margin-top: 6px;
+  font-size: 13.5px;
+  color: var(--color-ink-soft);
+  line-height: 1.65;
+}
+
+.verificationRow {
+  display: flex;
+  gap: var(--space-5);
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--color-ink);
+}
+
+.evidenceList {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.evidenceHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.evidenceTitle {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.evidenceValue {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--color-ink-soft);
+}
+
+.familyList {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12.5px;
+}
+
+.familyList li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.familyMeta {
+  color: var(--color-ink-faint);
+}
+
+.recommendation {
+  padding: var(--space-4);
+  background: var(--color-blue-bg);
+  border-left: 3px solid var(--color-blue);
+  border-radius: var(--radius-sm);
+}
+
+.recommendationLabel {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-blue);
+}
+
+.disclaimer {
+  font-size: 10.5px;
+  color: var(--color-ink-faint);
+  text-align: center;
+  font-style: italic;
+}
+
+@media print {
+  .sheet {
+    border: none;
+    box-shadow: none;
+  }
+}

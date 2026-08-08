@@ -1,0 +1,19 @@
+.wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.toast {
+  font-size: 11px;
+  color: var(--color-green);
+  font-weight: 600;
+  animation: fadeIn 150ms ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}

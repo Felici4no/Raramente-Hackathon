@@ -1,0 +1,31 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-sm);
+}
+
+.title {
+  font-size: 15.5px;
+}
+
+.body {
+  font-size: 13px;
+  color: var(--color-ink);
+  flex: 1;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border);
+  font-size: 10.5px;
+  color: var(--color-ink-faint);
+}

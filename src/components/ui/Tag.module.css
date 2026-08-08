@@ -1,0 +1,48 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.sm {
+  font-size: 9.5px;
+  padding: 2px 6px;
+}
+
+.md {
+  font-size: 10.5px;
+  padding: 3px 8px;
+}
+
+.neutral {
+  background: var(--color-surface-sunken);
+  color: var(--color-ink-soft);
+  border-color: var(--color-border);
+}
+
+.blue {
+  background: var(--color-blue-bg);
+  color: var(--color-blue);
+}
+
+.green {
+  background: var(--color-green-bg);
+  color: var(--color-green);
+}
+
+.amber {
+  background: var(--color-amber-bg);
+  color: var(--color-amber);
+}
+
+.terracotta {
+  background: var(--color-terracotta-bg);
+  color: var(--color-terracotta);
+}
