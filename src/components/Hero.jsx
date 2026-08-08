@@ -42,13 +42,52 @@ export default function Hero() {
           </div>
 
           {/* Coluna Direita - Mockup do Mascote & Card Interativo */}
-          <div className="animate-fade-in" style={{ position: 'relative' }}>
-            <div className="card" style={{ background: 'linear-gradient(145deg, #FFFFFF 0%, #F9F7F1 100%)', borderRadius: '12px', border: '1px solid #E2DDD3', padding: '28px', position: 'relative', overflow: 'hidden' }}>
+          <div className="animate-fade-in" style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            
+            {/* Card de Apresentação do Mascote */}
+            <div className="card" style={{ 
+              background: 'linear-gradient(135deg, #FFFFFF 0%, #F4F1E8 100%)', 
+              borderRadius: '16px', 
+              border: '2px solid #0B6B2B', 
+              padding: '24px', 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '20px',
+              boxShadow: '0 12px 32px rgba(11, 107, 43, 0.12)'
+            }}>
+              <img 
+                src="/nasua.png" 
+                alt="Nasua - O Mascote Agente de Saúde" 
+                style={{ 
+                  width: '150px', 
+                  height: '150px', 
+                  objectFit: 'contain',
+                  flexShrink: 0,
+                  filter: 'drop-shadow(0 4px 12px rgba(11,107,43,0.2))'
+                }} 
+              />
+
+              <div>
+                <div className="badge badge-primary" style={{ marginBottom: '8px', fontSize: '0.75rem' }}>
+                  <Sparkles size={12} />
+                  <span>Mascote Oficial • Agente na Sua</span>
+                </div>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#4A2F1B', margin: '0 0 6px' }}>
+                  Nasua, o Quati Agente! 🐾
+                </h3>
+                <p style={{ fontSize: '0.85rem', color: '#524B45', margin: 0, lineHeight: 1.5 }}>
+                  Inspirado no <em>Nasua nasua</em> (quati), mascote investigador do território que veste o colete do SUS para transformar áudios dos ACSs em diagnósticos precoce!
+                </p>
+              </div>
+            </div>
+
+            {/* Card Interativo com Sinal de Atipicidade */}
+            <div className="card" style={{ background: '#FFFFFF', borderRadius: '12px', border: '1px solid #E2DDD3', padding: '24px', position: 'relative', overflow: 'hidden' }}>
               
               {/* Badge Flutuante no topo do Card */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <img src="/nasua.png" alt="Nasua" style={{ width: '42px', height: '42px', objectFit: 'contain' }} />
+                  <img src="/nasua.png" alt="Nasua IA" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
                   <div>
                     <div style={{ fontWeight: 700, fontSize: '0.95rem', color: '#4A2F1B' }}>Nasua IA</div>
                     <div style={{ fontSize: '0.75rem', color: '#8B5A2B' }}>Agente Investigador Territorial</div>
@@ -62,7 +101,7 @@ export default function Hero() {
               </div>
 
               {/* Simulação rápida de card no Hero */}
-              <div style={{ background: '#FFFFFF', borderRadius: '8px', padding: '20px', border: '1px solid #EBE7DE', marginBottom: '20px' }}>
+              <div style={{ background: '#F9F7F1', borderRadius: '8px', padding: '18px', border: '1px solid #EBE7DE', marginBottom: '16px' }}>
                 <div style={{ fontSize: '0.8rem', color: '#8B5A2B', fontWeight: 700, marginBottom: '6px' }}>
                   MICROÁREA 04 • ACS ANA
                 </div>
@@ -82,7 +121,7 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.85rem', color: '#6B655F', borderTop: '1px solid #EBE7DE', paddingTop: '16px', flexWrap: 'wrap', gap: '8px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.85rem', color: '#6B655F', borderTop: '1px solid #EBE7DE', paddingTop: '14px', flexWrap: 'wrap', gap: '8px' }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                   <ShieldCheck size={16} color="#0B6B2B" />
                   Impacto Verificado SUS

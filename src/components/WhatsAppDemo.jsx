@@ -29,7 +29,7 @@ export default function WhatsAppDemo() {
             {/* Header do WhatsApp */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingBottom: '14px', borderBottom: '1px solid #222D34', marginBottom: '16px' }}>
               <div style={{ position: 'relative' }}>
-                <img src="/nasua.png" alt="Nasua IA" style={{ width: '40px', height: '40px', borderRadius: '8px', background: '#F4F1E8', padding: '2px' }} />
+                <img src="/nasua.png" alt="Nasua IA" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
                 <span style={{ position: 'absolute', bottom: 0, right: 0, width: '10px', height: '10px', background: '#25D366', borderRadius: '50%', border: '2px solid #0B141A' }}></span>
               </div>
               <div>

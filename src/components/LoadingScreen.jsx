@@ -23,14 +23,12 @@ export default function LoadingScreen({ isFadingOut }) {
     >
       <div style={{ textAlign: 'center', maxWidth: '360px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <img 
-          src="/logo.png" 
-          alt="Agente na Sua Logo" 
+          src="/nasua.png" 
+          alt="Nasua - Agente na Sua" 
           style={{ 
-            width: '140px', 
-            height: '140px', 
+            width: '160px', 
+            height: '160px', 
             objectFit: 'contain',
-            borderRadius: '12px',
-            boxShadow: '0 12px 36px rgba(11, 107, 43, 0.15)',
             marginBottom: '24px'
           }} 
         />
@@ -55,9 +53,12 @@ export default function LoadingScreen({ isFadingOut }) {
         <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#4A2F1B', marginBottom: '4px' }}>
           Agente na Sua
         </h3>
-        <p style={{ fontSize: '0.85rem', color: '#8B5A2B', fontWeight: 600 }}>
+        <p style={{ fontSize: '0.85rem', color: '#8B5A2B', fontWeight: 600, marginBottom: '16px' }}>
           Transformamos impacto em informação
         </p>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px', fontSize: '0.75rem', color: '#8B5A2B', opacity: 0.7 }}>
+          powered by <span style={{ fontWeight: 800, fontStyle: 'italic', color: '#0B6B2B' }}>QuaTiRare</span> 🐾
+        </div>
       </div>
 
       <style>{`

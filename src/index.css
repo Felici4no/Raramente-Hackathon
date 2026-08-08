@@ -352,8 +352,21 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 6px 22px rgba(11, 107, 43, 0.38);
 }
 
+.header-brand-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-text-brown);
+  white-space: nowrap;
+}
+
 @media (max-width: 900px) {
   .desktop-nav {
+    display: none;
+  }
+  .header-badge-desktop {
+    display: none;
+  }
+  .header-cta-desktop {
     display: none;
   }
 }

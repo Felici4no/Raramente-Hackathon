@@ -15,18 +15,22 @@ export default function Header() {
   return (
     <header className={`header-nav ${scrolled ? 'scrolled' : ''}`}>
       <div className="container header-content">
+        {/* Logo + Nome - sempre visível */}
         <a href="#" className="logo-group">
           <img 
-            src="/logo.png" 
-            alt="Agente na Sua Logo" 
+            src="/nasua.png" 
+            alt="Nasua - Agente na Sua Mascote" 
             className="header-logo"
+            style={{ width: '40px', height: '40px', objectFit: 'contain' }}
           />
-          <span className="badge badge-primary header-badge">
-            <ShieldCheck size={13} />
+          <span className="header-brand-name">Agente na Sua</span>
+          <span className="badge badge-primary header-badge header-badge-desktop">
+            <ShieldCheck size={12} />
             Plataforma SUS
           </span>
         </a>
 
+        {/* Nav central - só desktop */}
         <nav className="desktop-nav">
           <ul className="nav-links">
             <li><a href="#tese">A Tese</a></li>
@@ -37,7 +41,8 @@ export default function Header() {
           </ul>
         </nav>
 
-        <a href="#dashboard" className="btn btn-primary header-btn">
+        {/* CTA - só desktop */}
+        <a href="#dashboard" className="btn btn-primary header-btn header-cta-desktop">
           <span>Acessar o app</span>
           <ArrowRight size={15} />
         </a>
